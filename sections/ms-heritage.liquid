@@ -1,0 +1,398 @@
+{%- liquid
+  assign loading = "lazy"
+  assign decoding = "async"
+  assign fetchpriority = "auto"
+
+  assign image_1 = section.settings.image_1
+  assign image_2 = section.settings.image_2
+
+  if image_1 != blank
+    assign image_1_tag = image_1 | image_url: width: image_1.width | image_tag: widths: '300, 500, 700', sizes: '(min-width: 768px) 25vw, 50vw', alt: image_1.alt, class: 'ms-heritage__img', loading: loading, decoding: decoding
+  endif
+
+  if image_2 != blank
+    assign image_2_tag = image_2 | image_url: width: image_2.width | image_tag: widths: '300, 500, 700', sizes: '(min-width: 768px) 25vw, 50vw', alt: image_2.alt, class: 'ms-heritage__img ms-heritage__img--offset', loading: loading, decoding: decoding
+  endif
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-heritage__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: center;
+    padding: 0 24px;
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .ms-heritage__inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .ms-heritage__imgs {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-heritage__img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 5px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ms-heritage__img--offset {
+    margin-top: 28px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-heritage__quote {
+    position: absolute;
+    bottom: -20px;
+    right: -12px;
+    background: rgb(var(--color-button));
+    color: rgb(var(--color-button-label));
+    padding: 18px 22px;
+    border-radius: 5px;
+    max-width: 210px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .ms-heritage__quote {
+      right: -20px;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .ms-heritage__quote-text {
+    font-family: var(--font-heading-family);
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 8px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-heritage__quote-attr {
+    font-family: var(--font-body-family);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ms-heritage__eyebrow {
+    font-family: var(--font-body-family);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgb(var(--color-button));
+    margin: 0 0 12px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-heritage__title {
+    font-family: var(--font-heading-family);
+    font-weight: var(--font-heading-weight);
+    font-size: clamp(24px, 3vw, 38px);
+    line-height: 1.2;
+    color: rgb(var(--color-base-text));
+    margin: 0 0 18px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-heritage__body {
+    font-family: var(--font-body-family);
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgb(var(--color-base-text) / 0.65);
+    margin: 0 0 32px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-heritage__creds {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-heritage__cred {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-heritage__cred-title {
+    font-family: var(--font-heading-family);
+    font-size: 16px;
+    font-weight: 700;
+    color: rgb(var(--color-base-text));
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ms-heritage__cred-desc {
+    font-family: var(--font-body-family);
+    font-size: 12px;
+    line-height: 1.6;
+    color: rgb(var(--color-base-text) / 0.6);
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ms-heritage__cred-icon {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 8px;
+    color: rgb(var(--color-button));
+  }
+</style>
+
+<div class="s--margin color-{{ section.settings.color_scheme }} s-container-radius"
+     data-ui-component="MS Heritage"
+     role="region"
+     aria-labelledby="ms-heritage-heading-{{ section.id }}">
+
+  <div class="ctnr">
+    <div class="ms-heritage__inner">
+
+      <div class="ms-heritage__imgs js-animate anm anm-fadeIn">
+        {%- if image_1 != blank -%}
+          {{ image_1_tag }}
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'ms-heritage__img' }}
+        {%- endif -%}
+
+        {%- if image_2 != blank -%}
+          {{ image_2_tag }}
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'ms-heritage__img ms-heritage__img--offset' }}
+        {%- endif -%}
+
+        {%- if section.settings.quote != blank -%}
+          <div class="ms-heritage__quote">
+            <p class="ms-heritage__quote-text">"{{ section.settings.quote }}"</p>
+            {%- if section.settings.quote_attr != blank -%}
+              <p class="ms-heritage__quote-attr">— {{ section.settings.quote_attr }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="ms-heritage__text">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="ms-heritage__eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.title != blank -%}
+          <h2 class="ms-heritage__title" id="ms-heritage-heading-{{ section.id }}">
+            {{ section.settings.title }}
+          </h2>
+        {%- endif -%}
+
+        {%- if section.settings.body != blank -%}
+          <p class="ms-heritage__body">{{ section.settings.body }}</p>
+        {%- endif -%}
+
+        <div class="ms-heritage__creds">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'credential' -%}
+              <div class="ms-heritage__cred" {{ block.shopify_attributes }}>
+                <svg class="ms-heritage__cred-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  {%- case block.settings.icon -%}
+                    {%- when 'shield' -%}
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    {%- when 'flask' -%}
+                      <path d="M9 3h6m-6 0v6l-4 9h14L15 9V3M9 3H7m8 0h2"/>
+                    {%- when 'check' -%}
+                      <circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/>
+                    {%- when 'leaf' -%}
+                      <path d="M2 22c0 0 7-2 10-8s2-12 2-12-6 2-9 7-3 13-3 13z"/><path d="M12 14l-4 4"/>
+                    {%- else -%}
+                      <circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/>
+                  {%- endcase -%}
+                </svg>
+                {%- if block.settings.title != blank -%}
+                  <p class="ms-heritage__cred-title">{{ block.settings.title }}</p>
+                {%- endif -%}
+                {%- if block.settings.description != blank -%}
+                  <p class="ms-heritage__cred-desc">{{ block.settings.description }}</p>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "MS Heritage",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1 (left)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2 (right, offset)"
+    },
+    {
+      "type": "header",
+      "content": "Pull Quote"
+    },
+    {
+      "type": "text",
+      "id": "quote",
+      "label": "Quote Text",
+      "default": "Testing is not a checkbox — it is our philosophy."
+    },
+    {
+      "type": "text",
+      "id": "quote_attr",
+      "label": "Quote Attribution",
+      "default": "Director of Quality"
+    },
+    {
+      "type": "header",
+      "content": "Text Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Label",
+      "default": "The Clinical Artisan"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Scientific Heritage & Certified Transparency"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body Text",
+      "default": "Every batch undergoes multi-stage Spectrographic Analysis and Microbiological screening. Full Certificate of Analysis documentation ships with every order — because raw never means uncontrolled."
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "default": 64,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "credential",
+      "name": "Credential",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "shield",  "label": "Shield" },
+            { "value": "flask",   "label": "Flask" },
+            { "value": "check",   "label": "Check Circle" },
+            { "value": "leaf",    "label": "Leaf" }
+          ],
+          "default": "check"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "ICP-MS Screening"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Heavy metal testing at parts-per-billion precision."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MS Heritage",
+      "blocks": [
+        {
+          "type": "credential",
+          "settings": {
+            "icon": "flask",
+            "title": "ICP-MS Screening",
+            "description": "Heavy metal testing at parts-per-billion precision."
+          }
+        },
+        {
+          "type": "credential",
+          "settings": {
+            "icon": "shield",
+            "title": "GMP Certified",
+            "description": "Global manufacturing standards for purity and safety."
+          }
+        },
+        {
+          "type": "credential",
+          "settings": {
+            "icon": "check",
+            "title": "Food-Grade",
+            "description": "Human consumption safe, fully traceable sourcing."
+          }
+        },
+        {
+          "type": "credential",
+          "settings": {
+            "icon": "leaf",
+            "title": "Capsule-Ready",
+            "description": "Fine-milled for direct encapsulation or blending."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

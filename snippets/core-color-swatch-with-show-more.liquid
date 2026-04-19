@@ -1,0 +1,26 @@
+{%- for value in option.values -%}
+  {%- liquid
+    assign swatch_value = null
+    if value.swatch.color != blank or value.swatch.image != blank
+      if value.swatch.image
+        assign swatch_value = value.swatch.image | image_url
+      elsif value.swatch.color
+        assign swatch_value = value.swatch.color
+      else
+        assign swatch_value = null
+      endif
+    endif
+  -%}
+  <div class="filter-form__item product-swatches__item d-flex middle-xs gap-12 pt-8 pb-8 {% if value.count == 0 and value.active == false %} disabled filter-form--disabled{% endif %}">
+    <input type="radio" class="filter-form__radio js-variant-radio-item visually-hidden"
+      name="{{ value.param_name }}"
+      value="{{ value.value }}"
+      id="Filter-{{ section.id }}-{{ option.label | escape }}-{{ forloop.index }}"
+      {% if value.active %}checked{% endif %}
+      {% if value.count == 0 and value.active == false %}disabled{% endif %}>
+      <label class="product-swatches-label d-flex flex-1" for="Filter-{{ section.id }}-{{ option.label | escape }}-{{ forloop.index }}" tabindex="-1">
+        <span class="product-swatches js-variant-swatch-item pdg-12 mr-12 br-50p d-block" aria-hidden="true" data-option-value="{{ value.value | downcase | escape | remove: " " }}" data-swatch-source="{{ settings.swatch_source }}" data-swatch-option-value="{{ swatch_value }}"></span>
+        <span class="flex-1">{{ value.value }}</span>
+      </label>
+  </div>
+{%- endfor -%}

@@ -1,0 +1,37 @@
+{% comment %}
+  Renders a subheading block with customizable text
+
+  Accepts:
+  - block: {Object} Block object with settings
+  - block.settings.text: {String} Subheading text content
+
+  Usage:
+  Used as a block within sections
+{% endcomment %}
+
+{% if block.settings.text != blank %}
+  <div class="s-header__sub hide-empty mb-0 {{ settings.subheading_style }}" {{ block.shopify_attributes }}>
+    {{- block.settings.text | escape -}}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "t:general.subheading",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:general.text",
+      "default": "Add a tagline",
+      "info": "t:general.hide_if_empty"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:general.subheading",
+      "category": "t:general.typography"
+    }
+  ]
+}
+{% endschema %}

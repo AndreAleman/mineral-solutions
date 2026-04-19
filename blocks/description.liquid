@@ -1,0 +1,25 @@
+{% if block.settings.description != blank %}
+  <div class="rte hide-empty" {{ block.shopify_attributes }}>
+    {{- block.settings.description -}}
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "t:general.description",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "t:general.text",
+        "default": "<p>Highlight your values, products, or services</p>"
+      }
+    ],
+    "presets": [
+      {
+        "name": "t:general.description",
+        "category": "t:general.typography"
+      }
+    ]
+  }
+  {% endschema %}

@@ -1,0 +1,533 @@
+<div class="p-relative" {{ block.shopify_attributes }}>
+  {% render 'icon',
+    icon_size: block.settings.icon_size,
+    icon_color: block.settings.custom_icon_color,
+    theme_library_icon: block.settings.theme_library_icon,
+    icon_source: block.settings.icon_source,
+    icon_image: block.settings.icon_image,
+    custom_code: block.settings.custom_code
+  %}
+</div>
+
+{% schema %}
+{
+  "name": "t:general.icon",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:general.general"
+    },
+    {
+      "type": "select",
+      "label": "t:general.icon_source",
+      "id": "icon_source",
+      "options": [
+        {
+          "value": "theme_library",
+          "label": "t:general.theme_library"
+        },
+        {
+          "value": "image",
+          "label": "t:general.image"
+        },
+        {
+          "value": "custom_svg",
+          "label": "t:general.svg"
+        }
+      ],
+      "default": "theme_library"
+    },
+    {
+      "type": "select",
+      "label": "t:general.theme_library",
+      "id": "theme_library_icon",
+      "options": [
+        {
+          "group": "t:general.functional",
+          "value": "3d-model",
+          "label": "3d model"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "account",
+          "label": "Account"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "arrow-down",
+          "label": "Arrow down"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "arrow-left",
+          "label": "Arrow left"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "arrow-right",
+          "label": "Arrow right"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "arrow-up",
+          "label": "Arrow up"
+        },
+        {
+          "group": "t:general.health_beauty",
+          "value": "bottle",
+          "label": "Bottle"
+        },
+        {
+          "group": "t:general.shipping",
+          "value": "box",
+          "label": "Box"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "cart",
+          "label": "Cart"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "check-circle",
+          "label": "Check circle"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "check",
+          "label": "Check"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "chevron-down",
+          "label": "Chevron down"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "chevron-left",
+          "label": "Chevron left"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "chevron-right",
+          "label": "Chevron right"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "chevron-up",
+          "label": "Chevron up"
+        },
+        {
+          "group": "t:general.shipping",
+          "value": "clock",
+          "label": "Clock"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "close",
+          "label": "Close"
+        },
+        {
+          "group": "t:general.health_beauty",
+          "value": "cream-tube",
+          "label": "Cream tube"
+        },
+        {
+          "group": "t:general.shop",
+          "value": "discount",
+          "label": "Discount"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "drag",
+          "label": "Drag"
+        },
+        {
+          "group": "t:general.fashion",
+          "value": "dress",
+          "label": "Dress"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "ellipsis",
+          "label": "Ellipsis"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "exit-full-screen",
+          "label": "Exit full screen"
+        },
+        {
+          "group": "t:general.social",
+          "value": "facebook",
+          "label": "Facebook"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "filter-2",
+          "label": "Filter 2"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "filter",
+          "label": "Filter"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "full-screen",
+          "label": "Full screen"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "functional-3d",
+          "label": "Functional 3d"
+        },
+        {
+          "group": "t:general.shop",
+          "value": "gift",
+          "label": "Gift"
+        },
+        {
+          "group": "t:general.shipping",
+          "value": "global",
+          "label": "Global"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "grid-1",
+          "label": "Grid 1"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "grid-2",
+          "label": "Grid 2"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "hamburger",
+          "label": "Hamburger"
+        },
+        {
+          "group": "t:general.health_beauty",
+          "value": "hand",
+          "label": "Hand"
+        },
+        {
+          "group": "t:general.shop",
+          "value": "heart",
+          "label": "Heart"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "home",
+          "label": "Home"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "info",
+          "label": "Info"
+        },
+        {
+          "group": "t:general.social",
+          "value": "instagram",
+          "label": "Instagram"
+        },
+        {
+          "group": "t:general.fashion",
+          "value": "iron",
+          "label": "Iron"
+        },
+        {
+          "group": "t:general.shop",
+          "value": "like",
+          "label": "Like"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "linear",
+          "label": "Linear"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "link",
+          "label": "Link"
+        },
+        {
+          "group": "t:general.social",
+          "value": "linkedin",
+          "label": "Linkedin"
+        },
+        {
+          "group": "t:general.health_beauty",
+          "value": "lipstick",
+          "label": "Lipstick"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "mail",
+          "label": "Mail"
+        },
+        {
+          "group": "t:general.health_beauty",
+          "value": "makeup-brush",
+          "label": "Makeup brush"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "map-pin",
+          "label": "Map pin"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "minus",
+          "label": "Minus"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "mute",
+          "label": "Mute"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "next",
+          "label": "Next"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "page",
+          "label": "Page"
+        },
+        {
+          "group": "t:general.fashion",
+          "value": "pants",
+          "label": "Pants"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "pause",
+          "label": "Pause"
+        },
+        {
+          "group": "t:general.shop",
+          "value": "percent",
+          "label": "Percent"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "phone",
+          "label": "Phone"
+        },
+        {
+          "group": "t:general.social",
+          "value": "pinterest",
+          "label": "Pinterest"
+        },
+        {
+          "group": "t:general.shipping",
+          "value": "plane",
+          "label": "Plane"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "play-circle",
+          "label": "Play Circle"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "play",
+          "label": "Play"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "plus",
+          "label": "Plus"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "quote",
+          "label": "Quote"
+        },
+        {
+          "group": "t:general.shipping",
+          "value": "return",
+          "label": "Return"
+        },
+        {
+          "group": "t:general.fashion",
+          "value": "rss",
+          "label": "Rss"
+        },
+        {
+          "group": "t:general.fashion",
+          "value": "ruler",
+          "label": "Ruler"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "save",
+          "label": "Save"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "search",
+          "label": "Search"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "share",
+          "label": "Share"
+        },
+        {
+          "group": "t:general.fashion",
+          "value": "shirt",
+          "label": "Shirt"
+        },
+        {
+          "group": "t:general.fashion",
+          "value": "shoe",
+          "label": "Shoe"
+        },
+        {
+          "group": "t:general.social",
+          "value": "snapchat",
+          "label": "Snapchat"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "spinner",
+          "label": "Spinner"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "star-half",
+          "label": "Star half"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "star-line",
+          "label": "Star line"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "star",
+          "label": "Star"
+        },
+        {
+          "group": "t:general.shop",
+          "value": "storefront",
+          "label": "Storefront"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "subscription",
+          "label": "Subscription"
+        },
+        {
+          "group": "t:general.social",
+          "value": "tiktok",
+          "label": "Tiktok"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "trash-bin",
+          "label": "Trash bin"
+        },
+        {
+          "group": "t:general.shipping",
+          "value": "truck",
+          "label": "Truck"
+        },
+        {
+          "group": "t:general.social",
+          "value": "tumblr",
+          "label": "Tumblr"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "unmute",
+          "label": "Unmute"
+        },
+        {
+          "group": "t:general.social",
+          "value": "vimeo",
+          "label": "Vimeo"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "warning",
+          "label": "Warning"
+        },
+        {
+          "group": "t:general.fashion",
+          "value": "washing",
+          "label": "Washing"
+        },
+        {
+          "group": "t:general.social",
+          "value": "x-twitter",
+          "label": "Twitter"
+        },
+        {
+          "group": "t:general.social",
+          "value": "youtube",
+          "label": "Youtube"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "zoom-in",
+          "label": "Zoom in"
+        },
+        {
+          "group": "t:general.functional",
+          "value": "zoom-out",
+          "label": "Zoom out"
+        }
+      ],
+      "default": "subscription",
+      "visible_if": "{{ block.settings.icon_source == 'theme_library' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image",
+      "label": "t:general.image",
+      "info": "t:general.use_square_image_info",
+      "visible_if": "{{ block.settings.icon_source == 'image' }}"
+    },
+    {
+      "type": "html",
+      "label": "t:general.custom_svg",
+      "id": "custom_code",
+      "info": "t:general.custom_svg_info",
+      "visible_if": "{{ block.settings.icon_source == 'custom_svg' }}"
+    },
+    {
+      "type": "color",
+      "id": "custom_icon_color",
+      "label": "t:general.custom_icon_color"
+    },
+    {
+      "type": "header",
+      "content": "t:general.size"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "t:general.icon_size",
+      "info": "t:general.icon_size_info",
+      "min": 16,
+      "max": 100,
+      "step": 2,
+      "default": 24,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:general.icon",
+      "category": "t:general.basic"
+    }
+  ]
+}
+{% endschema %}
+

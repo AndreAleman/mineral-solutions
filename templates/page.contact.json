@@ -1,0 +1,130 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "color_scheme": "scheme-1"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-1",
+        "show_page_title": true,
+        "show_page_content": true
+      }
+    },
+    "running_content_7Y6By9": {
+      "type": "running-content",
+      "blocks": {
+        "text_GpN7UW": {
+          "type": "text",
+          "settings": {
+            "promotion_text": "<p><em>Contact us</em></p>",
+            "color_text": "",
+            "text_color_gradient": ""
+          }
+        },
+        "text_cXHaNw": {
+          "type": "text",
+          "settings": {
+            "promotion_text": "<p><em>Contact us</em></p>",
+            "color_text": "",
+            "text_color_gradient": ""
+          }
+        },
+        "text_UNtrpU": {
+          "type": "text",
+          "settings": {
+            "promotion_text": "<p><em>Contact us</em></p>",
+            "color_text": "",
+            "text_color_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_GpN7UW",
+        "text_cXHaNw",
+        "text_UNtrpU"
+      ],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "speed": "150",
+        "moving_direction": "animation-reverse",
+        "pause_when_hover": false,
+        "heading_size": "h2"
+      }
+    },
+    "contact-form": {
+      "type": "contact-form",
+      "settings": {
+        "color_scheme": "scheme-5",
+        "heading": "",
+        "heading_size": "h3",
+
+        "content_ordering_desktop": "fd-row-reverse-md",
+        "content_ordering_mobile": "fd-column-reverse",
+        "button_label": "Send message",
+        "style_button": "btn-primary"
+      }
+    },
+    "running_content_c43ieV": {
+      "type": "running-content",
+      "blocks": {
+        "text_tcpQDR": {
+          "type": "text",
+          "settings": {
+            "promotion_text": "<p><em>Contact us</em></p>",
+            "color_text": "",
+            "text_color_gradient": ""
+          }
+        },
+        "text_3b8agP": {
+          "type": "text",
+          "settings": {
+            "promotion_text": "<p><em>Contact us</em></p>",
+            "color_text": "",
+            "text_color_gradient": ""
+          }
+        },
+        "text_BxRYqA": {
+          "type": "text",
+          "settings": {
+            "promotion_text": "<p><em>Contact us</em></p>",
+            "color_text": "",
+            "text_color_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_tcpQDR",
+        "text_3b8agP",
+        "text_BxRYqA"
+      ],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "speed": "150",
+        "moving_direction": "animation-direction",
+        "pause_when_hover": false,
+        "heading_size": "h2"
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main",
+    "running_content_7Y6By9",
+    "contact-form",
+    "running_content_c43ieV"
+  ]
+}

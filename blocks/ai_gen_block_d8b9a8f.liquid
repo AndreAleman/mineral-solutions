@@ -1,0 +1,598 @@
+{% doc %}
+  @prompt
+    Create a product category showcase section with a hero layout at the top and card grid below. The top section should have a large product image on the left side, with the category title, description text, and a call-to-action button aligned on the right side. Below that, display 3 product category cards in a row, each with an image, title, and description. Make it responsive so cards stack on mobile. Include customizable settings for all images, titles, descriptions, and button text/links.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-category-showcase-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+  }
+
+  .ai-category-hero-{{ ai_gen_id }} {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 60px;
+  }
+
+  .ai-category-hero-image-{{ ai_gen_id }} {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ai-category-hero-image-{{ ai_gen_id }} img {
+    width: 100%;
+    height: auto;
+    border-radius: {{ block.settings.hero_image_border_radius }}px;
+    object-fit: cover;
+  }
+
+  .ai-category-hero-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-color: #f4f4f4;
+    border-radius: {{ block.settings.hero_image_border_radius }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-category-hero-image-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-category-hero-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .ai-category-hero-content-{{ ai_gen_id }} {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ai-category-hero-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.hero_title_size }}px;
+    color: {{ block.settings.hero_title_color }};
+    margin: 0 0 20px;
+    line-height: 1.2;
+  }
+
+  .ai-category-hero-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.hero_description_size }}px;
+    color: {{ block.settings.hero_description_color }};
+    margin: 0 0 30px;
+    line-height: 1.6;
+  }
+
+  .ai-category-hero-button-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: {{ block.settings.hero_button_bg_color }};
+    color: {{ block.settings.hero_button_text_color }};
+    text-decoration: none;
+    border-radius: {{ block.settings.hero_button_border_radius }}px;
+    font-size: {{ block.settings.hero_button_font_size }}px;
+    transition: all 0.3s ease;
+  }
+
+  .ai-category-hero-button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.hero_button_hover_bg_color }};
+    color: {{ block.settings.hero_button_hover_text_color }};
+  }
+
+  .ai-category-cards-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .ai-category-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_bg_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ai-category-card-{{ ai_gen_id }}:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .ai-category-card-image-{{ ai_gen_id }} {
+    width: 100%;
+    aspect-ratio: {{ block.settings.card_image_aspect_ratio }};
+    overflow: hidden;
+  }
+
+  .ai-category-card-image-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-category-card-{{ ai_gen_id }}:hover .ai-category-card-image-{{ ai_gen_id }} img {
+    transform: scale(1.05);
+  }
+
+  .ai-category-card-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-category-card-image-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-category-card-content-{{ ai_gen_id }} {
+    padding: 25px;
+  }
+
+  .ai-category-card-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.card_title_size }}px;
+    color: {{ block.settings.card_title_color }};
+    margin: 0 0 12px;
+    line-height: 1.3;
+  }
+
+  .ai-category-card-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.card_description_size }}px;
+    color: {{ block.settings.card_description_color }};
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-category-hero-{{ ai_gen_id }} {
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .ai-category-cards-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-category-hero-{{ ai_gen_id }} {
+      flex-direction: column;
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    .ai-category-cards-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .ai-category-hero-title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.hero_title_size }}px * 0.8);
+    }
+
+    .ai-category-hero-description-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.hero_description_size }}px * 0.9);
+    }
+
+    .ai-category-card-title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.card_title_size }}px * 0.9);
+    }
+  }
+{% endstyle %}
+
+<category-showcase-{{ ai_gen_id }} class="ai-category-showcase-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-category-hero-{{ ai_gen_id }}">
+    <div class="ai-category-hero-image-{{ ai_gen_id }}">
+      {% if block.settings.hero_image %}
+        <img
+          src="{{ block.settings.hero_image | image_url: width: 1200 }}"
+          alt="{{ block.settings.hero_image.alt | escape }}"
+          loading="lazy"
+          width="{{ block.settings.hero_image.width }}"
+          height="{{ block.settings.hero_image.height }}"
+        >
+      {% else %}
+        <div class="ai-category-hero-image-placeholder-{{ ai_gen_id }}">
+          {{ 'hero-apparel-1' | placeholder_svg_tag }}
+          <div class="ai-category-hero-empty-state-{{ ai_gen_id }}">
+            Add a hero image
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="ai-category-hero-content-{{ ai_gen_id }}">
+      {% if block.settings.hero_title != blank %}
+        <h2 class="ai-category-hero-title-{{ ai_gen_id }}">{{ block.settings.hero_title }}</h2>
+      {% endif %}
+
+      {% if block.settings.hero_description != blank %}
+        <div class="ai-category-hero-description-{{ ai_gen_id }}">
+          {{ block.settings.hero_description }}
+        </div>
+      {% endif %}
+
+      {% if block.settings.hero_button_text != blank %}
+        <a
+          href="{{ block.settings.hero_button_link }}"
+          class="ai-category-hero-button-{{ ai_gen_id }}"
+        >
+          {{ block.settings.hero_button_text }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="ai-category-cards-grid-{{ ai_gen_id }}">
+    {% for i in (1..3) %}
+      {% liquid
+        assign card_image_key = 'card_' | append: i | append: '_image'
+        assign card_title_key = 'card_' | append: i | append: '_title'
+        assign card_description_key = 'card_' | append: i | append: '_description'
+        assign card_link_key = 'card_' | append: i | append: '_link'
+
+        assign card_image = block.settings[card_image_key]
+        assign card_title = block.settings[card_title_key]
+        assign card_description = block.settings[card_description_key]
+        assign card_link = block.settings[card_link_key]
+      %}
+
+      {% if card_link != blank %}
+        <a href="{{ card_link }}" class="ai-category-card-{{ ai_gen_id }}">
+      {% else %}
+        <div class="ai-category-card-{{ ai_gen_id }}">
+      {% endif %}
+
+        <div class="ai-category-card-image-{{ ai_gen_id }}">
+          {% if card_image %}
+            <img
+              src="{{ card_image | image_url: width: 800 }}"
+              alt="{{ card_image.alt | escape }}"
+              loading="lazy"
+              width="{{ card_image.width }}"
+              height="{{ card_image.height }}"
+            >
+          {% else %}
+            <div class="ai-category-card-image-placeholder-{{ ai_gen_id }}">
+              {{ 'collection-apparel-1' | placeholder_svg_tag }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="ai-category-card-content-{{ ai_gen_id }}">
+          {% if card_title != blank %}
+            <h3 class="ai-category-card-title-{{ ai_gen_id }}">{{ card_title }}</h3>
+          {% endif %}
+
+          {% if card_description != blank %}
+            <div class="ai-category-card-description-{{ ai_gen_id }}">
+              {{ card_description }}
+            </div>
+          {% endif %}
+        </div>
+
+      {% if card_link != blank %}
+        </a>
+      {% else %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</category-showcase-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class CategoryShowcase{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.cards = this.querySelectorAll('.ai-category-card-{{ ai_gen_id }}');
+      }
+    }
+
+    customElements.define('category-showcase-{{ ai_gen_id }}', CategoryShowcase{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Category showcase",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero section"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "hero_image_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 12
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Title",
+      "default": "Discover Our Collection"
+    },
+    {
+      "type": "range",
+      "id": "hero_title_size",
+      "min": 24,
+      "max": 72,
+      "step": 4,
+      "unit": "px",
+      "label": "Title size",
+      "default": 48
+    },
+    {
+      "type": "color",
+      "id": "hero_title_color",
+      "label": "Title color",
+      "default": "#7b2b26"
+    },
+    {
+      "type": "richtext",
+      "id": "hero_description",
+      "label": "Description",
+      "default": "<p>Explore our curated selection of premium products designed to elevate your lifestyle.</p>"
+    },
+    {
+      "type": "range",
+      "id": "hero_description_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description size",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "hero_description_color",
+      "label": "Description color",
+      "default": "#2e292e"
+    },
+    {
+      "type": "text",
+      "id": "hero_button_text",
+      "label": "Button text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "hero_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "range",
+      "id": "hero_button_font_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Button font size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "hero_button_bg_color",
+      "label": "Button background",
+      "default": "#c54c44"
+    },
+    {
+      "type": "color",
+      "id": "hero_button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "hero_button_hover_bg_color",
+      "label": "Button hover background",
+      "default": "#7b2b26"
+    },
+    {
+      "type": "color",
+      "id": "hero_button_hover_text_color",
+      "label": "Button hover text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "hero_button_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Button border radius",
+      "default": 25
+    },
+    {
+      "type": "header",
+      "content": "Category cards"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Card border radius",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "card_image_aspect_ratio",
+      "label": "Image aspect ratio",
+      "options": [
+        {
+          "value": "1 / 1",
+          "label": "Square"
+        },
+        {
+          "value": "4 / 3",
+          "label": "Landscape"
+        },
+        {
+          "value": "3 / 4",
+          "label": "Portrait"
+        }
+      ],
+      "default": "4 / 3"
+    },
+    {
+      "type": "range",
+      "id": "card_title_size",
+      "min": 16,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "Card title size",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Card title color",
+      "default": "#7b2b26"
+    },
+    {
+      "type": "range",
+      "id": "card_description_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Card description size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "card_description_color",
+      "label": "Card description color",
+      "default": "#2e292e"
+    },
+    {
+      "type": "header",
+      "content": "Card 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "card_1_title",
+      "label": "Title",
+      "default": "New Arrivals"
+    },
+    {
+      "type": "richtext",
+      "id": "card_1_description",
+      "label": "Description",
+      "default": "<p>Check out our latest products and trending styles.</p>"
+    },
+    {
+      "type": "url",
+      "id": "card_1_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Card 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "card_2_title",
+      "label": "Title",
+      "default": "Best Sellers"
+    },
+    {
+      "type": "richtext",
+      "id": "card_2_description",
+      "label": "Description",
+      "default": "<p>Discover our most popular items loved by customers.</p>"
+    },
+    {
+      "type": "url",
+      "id": "card_2_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Card 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "card_3_title",
+      "label": "Title",
+      "default": "Sale Items"
+    },
+    {
+      "type": "richtext",
+      "id": "card_3_description",
+      "label": "Description",
+      "default": "<p>Save big on selected products with limited-time offers.</p>"
+    },
+    {
+      "type": "url",
+      "id": "card_3_link",
+      "label": "Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category showcase"
+    }
+  ]
+}
+{% endschema %}

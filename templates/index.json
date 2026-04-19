@@ -1,0 +1,772 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ms_hero_P6AYUc": {
+      "type": "ms-hero",
+      "name": "MS Hero Banner",
+      "settings": {
+        "color_scheme": "scheme-6",
+        "desktop_image": "shopify://shop_images/unnamed.webp",
+        "height_desktop": "85vh",
+        "height_mobile": "70vh",
+        "overlay_color": "#000000",
+        "overlay_opacity": 25,
+        "badge_text": "Food-Grade & Laboratory Tested",
+        "heading_line1": "Earth's",
+        "heading_line2": "Digestive Alchemy",
+        "subtext": "Pure mineral powders harnessing the ion-exchange power of rare earths. Formulated for internal wellness, rigorously tested for professional-grade purity.",
+        "btn1_label": "Explore Collections",
+        "btn1_link": "",
+        "btn2_label": "Read Our Heritage",
+        "btn2_link": ""
+      }
+    },
+    "image-banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_AFAyYw": {
+          "type": "heading",
+          "settings": {
+            "heading": "Daily Clays Made Simple",
+            "heading_size": "h2"
+          }
+        },
+        "description_3zd8eJ": {
+          "type": "description",
+          "settings": {
+            "description": "<p>Edible clays and mineral soaks to support digestion, gentle detox, and skin from the inside out.</p>"
+          }
+        },
+        "button_Awy4Yt": {
+          "type": "button",
+          "settings": {
+            "button_main_text": "Beginner's Guide",
+            "button_style": "btn-outline",
+            "button_main_link": "shopify://pages/a-comprehensive-beginner-s-guide-to-using-edible-clay",
+            "button_sub_text": "Start My Clay Routine",
+            "button_sub_style": "btn-outline",
+            "button_sub_link": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "heading_AFAyYw",
+        "description_3zd8eJ",
+        "button_Awy4Yt"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "desktop_image": "shopify://shop_images/mixture.webp",
+        "height_desktop": "50vh",
+        "content_position_desktop": "center-md bottom-md ta-center-md",
+        "height_mobile": "50vh",
+        "content_position_mobile": "center-xs bottom-xs ta-center",
+        "link": "",
+        "section_mask_overlay_color": "#17161a",
+        "section_overlay_opacity": 40,
+        "section_content_overlay_color": "#ffffff"
+      }
+    },
+    "running_content_CqWG7B": {
+      "type": "running-content",
+      "blocks": {
+        "icon_7P9Mtr": {
+          "type": "icon",
+          "settings": {
+            "icon_source": "custom_svg",
+            "options_icon": "subscription",
+            "html_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"><g fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\"><path d=\"M13.906 13.498a2.776 2.776 0 1 0 0-5.552a2.776 2.776 0 0 0 0 5.552m-.462-7.634h.925m-.463 0v2.082m3.108-.987l.655.655m-.328-.328l-1.472 1.473m2.895 1.5v.925m0-.462h-2.082m.987 3.108l-.655.654m.327-.327l-1.472-1.472m-1.5 2.895h-.925m.462 0v-2.082m-3.108.986l-.654-.654m.327.327l1.472-1.472m-2.895-1.501v-.925m0 .463h2.082m-.986-3.108l.654-.655m-.327.327l1.472 1.473\"></path><path d=\"M8.083 23.25a11.1 11.1 0 0 1 .826-3.731c4.13.685 11.261-1.615 13.4-5.892C25.17 7.9 20.184.781 13.6 1.878a10.6 10.6 0 0 0-5.3 2.551C7.051 3.248 7 2.8 5.98.75M.867.75a20.5 20.5 0 0 0 4.356 7.8C3.827 11.48 3.6 14.7 4.7 16.828a14.34 14.34 0 0 0-1.73 6.422\"></path></g></svg>",
+            "color_content": ""
+          }
+        },
+        "text_cVtGzE": {
+          "type": "text",
+          "settings": {
+            "promotion_text": "<p>Mineral nourishment</p>",
+            "color_text": "",
+            "text_color_gradient": ""
+          }
+        },
+        "icon_xGxrd9": {
+          "type": "icon",
+          "settings": {
+            "icon_source": "custom_svg",
+            "options_icon": "subscription",
+            "html_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path fill=\"currentColor\" d=\"M132.4 40.51c-28.4-.1-56.21 46.13-46.13 72.89c11.98 31.7 76.43 53.3 97.93 27.1c23.6-28.9-13.2-97.88-50.4-99.95h-1.4zm-.5 18.84h.9c2.6.1 5.9.55 6.5 3.23c2.7 12.38-26.4 49.82-31.3 47.82c-9.58-3.9-6.9-23.04-1.6-32.17c4.6-8.19 16.6-18.57 25.5-18.88m234.9 1.01c-48 .59-111.6 26.22-111 76.84c.7 68.2 99.7 95.4 155.9 84.1c28-5.5 62.5-35.7 61.9-69.6c-.8-46-49.3-84.06-87.4-90.06c-6-.94-12.5-1.36-19.4-1.28m-39.7 25.05c5.5-.1 15.1 1.72 12.7 6.45c-9.6 19.04-47.6 63.64-56.4 54.14c-9.8-10.5-3-32 6.7-42.5c8-8.64 24.7-17.96 37-18.09m-162 111.49c-9.5.2-18.3 2.5-25.6 7.3c-21.5 14.2-27.7 71.8-12.2 96.6C157 348 253 357.6 263.8 297.1c9.3-52-52.9-100.9-98.7-100.2m2.6 12.1c3.2-.1 7.5 1.3 7.7 5.6c1 19.8-21.9 67.4-34.3 57.7c-8.3-6.5-4.1-31.4 1.8-42.6c5.2-9.6 16.5-20.6 24.8-20.7m196.8 55.8c-6.4 0-12.3 1-17.6 3.2c-29.4 12.1-33.4 67.4-9.3 86.6c27.9 22.6 102.6 11.7 110.1-21.4c7.1-31.4-44.7-68.3-83.2-68.4m-1 9.1c2 .1 4.8.4 5.4 2.8c3.6 14.4-10.7 60.3-24.1 56.7c-9.6-2.6-9.1-24.4-5.2-35.2c3.9-10.3 15.3-24.6 23.9-24.3m-263.4 65.5c-36.1-.2-73.09 58.2-58.43 91.2C59.32 470.3 146.1 488 170.2 451.9c24.5-36.8-26-112.2-70.1-112.5m4.2 14.3c4.5-.1 10.2 1.9 9.8 7.6c-1.8 26-35.65 77.1-48.52 63.1c-8.54-9.3-.89-37.3 7.65-49.7c7.11-10 21.23-20.9 31.07-21\"></path></svg>",
+            "color_content": ""
+          }
+        },
+        "text_jPcqJq": {
+          "type": "text",
+          "settings": {
+            "promotion_text": "<p>Gentle detox support</p>",
+            "color_text": "",
+            "text_color_gradient": ""
+          }
+        },
+        "icon_WnJFUi": {
+          "type": "icon",
+          "settings": {
+            "icon_source": "custom_svg",
+            "options_icon": "subscription",
+            "html_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewbox=\"0 0 48 48\"><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"4\" d=\"M6 33v6a3 3 0 0 0 3 3h6m18 0h6a3 3 0 0 0 3-3v-6m0-18V9a3 3 0 0 0-3-3h-6M6 15V9a3 3 0 0 1 3-3h6m19 18L24 34L14 24c-1-1-1.5-3 0-5s4.5-2 6-1s2 2 4 2s2.5-1 4-2s4.5-1 6 1s1 4 0 5\"></path></svg>",
+            "color_content": ""
+          }
+        },
+        "text_jxTBmw": {
+          "type": "text",
+          "settings": {
+            "promotion_text": "<p>Digestive comfort</p>",
+            "color_text": "",
+            "text_color_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "icon_7P9Mtr",
+        "text_cVtGzE",
+        "icon_xGxrd9",
+        "text_jPcqJq",
+        "icon_WnJFUi",
+        "text_jxTBmw"
+      ],
+      "custom_css": [
+        "/* Round images in running content section to 3px */#template--20325531484331__running_content_CqWG7B img {border-radius: 3px !important;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "speed": "50",
+        "moving_direction": "animation-direction",
+        "pause_when_hover": false,
+        "heading_size": "h5"
+      }
+    },
+    "featured_collection_YzXYUb": {
+      "type": "featured-collection",
+      "custom_css": [
+        "/* Reserve the same space for titles */.product-card .card__heading {min-height: 3.6em; /* tweak until all titles fit in 2–3 lines */}",
+        " /* Reserve the same space for subtitles */.product-card__subtitle {font-size: 14px; /* was 0.875rem */ line-height: 1.4; min-height: 5.6em; /* keep this so rows stay aligned */}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "collection": "clay-minerals",
+        "subheading": "",
+        "heading": "Most [Loved] Clays",
+        "heading_size": "h2",
+        "description": "<p>Not sure where to begin? Start with these most‑used clays for daily digestion and detox support.</p>",
+        "items_to_show": 12,
+        "show_vendor": false,
+        "show_color_swatch": true,
+        "quick_shop_action": "both",
+        "content_align_desktop": "ta-center-md",
+        "carousel_desktop": "true",
+        "columns_per_row_desktop": "3",
+        "content_align_mobile": "ta-center",
+        "carousel_mobile": "true",
+        "columns_per_row_mobile": "2",
+        "enable_button": false,
+        "button_text": "Explore this collection",
+        "style_button": "btn-primary"
+      }
+    },
+    "media_with_text_columns_qdexGp": {
+      "type": "media-with-text-columns",
+      "blocks": {
+        "image_Ghgjaa": {
+          "type": "image",
+          "settings": {
+            "heading": "Standing Bunny Program",
+            "description": "<p>Standing Bunny certified, cruelty-free, environmentally conscious, and kind to all living beings.</p>"
+          }
+        },
+        "image_WHJj9p": {
+          "type": "image",
+          "settings": {
+            "heading": "The Nature Social",
+            "description": "<p>Eco-friendly and socially conscious, certified by The Nature Social for sustainable, ethical, and natural ingredients.</p>"
+          }
+        },
+        "image_HcKeCc": {
+          "type": "image",
+          "settings": {
+            "heading": "Advocates for Animals",
+            "description": "<p>Championing animal welfare, our product is Advocates for Animals certified, ensuring ethical and humane practices.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "image_Ghgjaa",
+        "image_WHJj9p",
+        "image_HcKeCc"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-4",
+        "subheading": "",
+        "heading": "Reviews-Testamonials",
+        "heading_size": "h3",
+        "description": "",
+        "item_alignment": "ta-center",
+        "image_ratio": "16/9",
+        "column_heading_size": "h6",
+        "enable_item_background": false,
+        "background_content": "",
+        "color_content": "",
+        "content_align_desktop": "ta-center-md",
+        "columns_per_row": "3",
+        "content_align_mobile": "ta-center",
+        "list_style": "false",
+        "button_text": "",
+        "style_button": "btn-primary",
+        "button_link": ""
+      }
+    },
+    "ms_mineral_triptych_LgRcnK": {
+      "type": "ms-mineral-triptych",
+      "blocks": {
+        "mineral_card_6Rf6aY": {
+          "type": "mineral_card",
+          "settings": {
+            "image": "shopify://shop_images/MS-RDCB-1000x1000.png",
+            "offset": false,
+            "label": "Volcanic Earth",
+            "title": "Bentonite",
+            "description": "Sodium bentonite sun-dried to preserve its active crystalline lattice. Supports digestive detoxification through powerful adsorption.",
+            "feature_1": "Ionic Gut Detoxification",
+            "feature_2": "High Swelling Capacity",
+            "btn_label": "Shop Bentonite",
+            "btn_link": "shopify://products/green-desert-calcium-bentonite"
+          }
+        },
+        "mineral_card_M3y79F": {
+          "type": "mineral_card",
+          "settings": {
+            "image": "shopify://shop_images/MS-MZ-1000x1000.png",
+            "offset": true,
+            "label": "Clinoptilolite Grade",
+            "title": "Zeolite",
+            "description": "A molecular sieve of unmatched precision. Microporous aluminosilicate minerals optimized for digestive filtration and gut support.",
+            "feature_1": "Heavy Metal Affinity",
+            "feature_2": "Molecular Pore Precision",
+            "btn_label": "Shop Zeolite",
+            "btn_link": "shopify://products/micronized-zeolite"
+          }
+        },
+        "mineral_card_r6WDRn": {
+          "type": "mineral_card",
+          "settings": {
+            "image": "shopify://shop_images/MS-SB-1000x1000.png",
+            "offset": false,
+            "label": "Sedimentary Silica",
+            "title": "Illite",
+            "description": "Rich in trace minerals and potassium. Exceptional structural support favored for advanced wellness formulations and gut mineral replenishment.",
+            "feature_1": "Rich Trace Elements",
+            "feature_2": "Mineral Gut Support",
+            "btn_label": "Shop Illite",
+            "btn_link": "shopify://products/illite-french-green-clay"
+          }
+        }
+      },
+      "block_order": [
+        "mineral_card_6Rf6aY",
+        "mineral_card_M3y79F",
+        "mineral_card_r6WDRn"
+      ],
+      "name": "MS Mineral Triptych",
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "Our Minerals",
+        "title": "The Elemental Foundation",
+        "subtitle": "Three cornerstone minerals, each selected for its ion-exchange capacity, digestive affinity, and structural purity.",
+        "header_spacing": 48,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "info_tab_k7PWXb": {
+      "type": "info-tab",
+      "blocks": {
+        "tab_DC8Bxf": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/MS_-_Triple_Blend_-_1000x1000_lines_-_cover.png",
+            "heading": "Choose Your Clay",
+            "description": "<p>Pick the clay that best fits your goal—daily digestion support, deeper <br/>detox, or skin and bath rituals—using the ‘Choose your clay’ guide below</p>"
+          }
+        },
+        "tab_CiMmfC": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/spoon.webp",
+            "heading": "Start Low and Slow",
+            "description": "<p>Mix 1 teaspoon of clay into about 500 ml (16 oz) of water the night <br/>before, let it settle, then drink the clay water (not the sediment) once<br/> a day</p>"
+          }
+        },
+        "tab_EHNjm4": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/stomach.webp",
+            "heading": "Listen and Adjust",
+            "description": "<p>Listen to your body. Use daily for around 10 days while drinking plenty of water. If you feel<br/> any discomfort, pause for three days, then resume—some people do better<br/> taking clay in the evening instead of morning</p>"
+          }
+        },
+        "tab_9YP3n6": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/healthy.webp",
+            "heading": "Find your routine",
+            "description": "<p>Once your body is used to clay, stick with a simple maintenance routine <br/>(1 teaspoon a day or a few times per week), or gradually increase <br/>frequency and amount if you need deeper digestive or detox support.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "tab_DC8Bxf",
+        "tab_CiMmfC",
+        "tab_EHNjm4",
+        "tab_9YP3n6"
+      ],
+      "name": "Steps",
+      "settings": {
+        "color_scheme": "scheme-4",
+        "subheading": "",
+        "heading": "From Clay to Cleanse",
+        "heading_size": "h2",
+        "description": "",
+        "image_ratio": "3/2",
+        "enable_autoplay": true,
+        "auto_play_time": 5,
+        "content_align": "ta-center-md",
+        "content_ordering_desktop": "fd-row-md",
+        "image_size_on_large": "6",
+        "content_align_mobile": "ta-left",
+        "content_ordering_mobile": "fd-column-reverse",
+        "button_text": "",
+        "style_button": "btn-primary",
+        "button_link": ""
+      }
+    },
+    "176884196122141703": {
+      "type": "_blocks",
+      "blocks": {
+        "heading_jWWfB3": {
+          "type": "heading",
+          "name": "t:general.heading",
+          "settings": {
+            "heading": "Choose Your Clay",
+            "heading_size": "h2",
+            "heading_width": 100
+          },
+          "blocks": {}
+        },
+        "types_of_clay_block_MAY3B3": {
+          "type": "types-of-clay-block",
+          "name": "Types of Clay Block",
+          "settings": {
+            "slide_1_image": "shopify://shop_images/MS-MZ-1000x1000.png",
+            "slide_1_title": "Bentonite",
+            "slide_1_subtitle": "Montmorillonite",
+            "slide_1_description": "<p>Bentonite, also commonly known as <em>Green Alkaline Healing Clay</em>, or <em><strong>Green Desert Calcium Bentonite</strong></em>, is in a class of clays known as Smectites, a class of swelling clays.</p><p>Smectite is derived from the ancient Greek word <em><strong>σμηκτρίς</strong></em><strong>s </strong>or<strong> </strong><em><strong>mektris</strong></em> meaning, '<em>earth that has the property of cleaning</em>'</p><p>As with any mineral, the quality of clay deposits vary, and the mineral content of any given \"Bentonite\" is also quite different depending on the source.</p><p>Different forms of bentonite may have different properties, such as:</p><ul><li><em><strong>Sodium Bentonite</strong></em></li><li><em><strong>Calcium Bentonite</strong></em></li><li><em><strong>Magnesium Bentonite</strong></em></li></ul>",
+            "slide_1_button_text": "Shop now",
+            "slide_1_button_link": "shopify://products/red-desert-calcium-bentonite",
+            "slide_2_image": "shopify://shop_images/MS-FGCI-1000x1000.png",
+            "slide_2_title": "Illite",
+            "slide_2_subtitle": "French Green Clay",
+            "slide_2_description": "<p><strong>Montmorillonite</strong>: French green healing clay (also a smectite) closely related to bentonite.</p><p><br/><strong>Illite: </strong>Non-swelling green healing clay (mica) known to have potent healing properties.</p><p>Utilizing the curative power of the Earth in practices such as Pelotherapy should, we believe, truly be considered a lifestyle modification; it should be adopted as an integral part of healthy living. There is no substitute for the benefits that quality healing clays can provide both in and on the body. We cordially invite you to view what we have discovered over the last several years of research.</p>",
+            "slide_2_button_text": "Explore",
+            "slide_2_button_link": "shopify://products/illite-french-green-clay",
+            "slide_3_image": "shopify://shop_images/MS_-_Inland_Sea_Minerals_Bath_Blend_-_Salt_-_1000x1000_lines_-_cover.png",
+            "slide_3_title": "Salts",
+            "slide_3_subtitle": "Mineral",
+            "slide_3_description": "<p><strong>Magnesium Chloride</strong>: Derived from sea salts, Magnesium Chloride Flakes are the 100% pure and natural way to replenish the body's stores.</p><p><strong>Himalayan Pink Salt: </strong>Straight from the foothills of the world's highest mountain range, Himalaya Pink Salt is believed to be the purest of the salts, delivering over 84 minerals and trace elements.</p><p><strong>Dead Sea Salt: </strong>Procured from the saltiest and deepest sea in the world, Dead Sea Salt is world re-known for being a great anti-inflammatory and skin rejuvenator.</p>",
+            "slide_3_button_text": "Learn more",
+            "slide_3_button_link": "shopify://products/triple-blend-varieties",
+            "title_size": 40,
+            "subtitle_size": 20,
+            "description_size": 16,
+            "button_size": 16,
+            "title_color": "#7b2b26",
+            "subtitle_color": "#7b2b26",
+            "description_color": "#7b2b26",
+            "button_bg_color": "#c54c44",
+            "button_hover_bg_color": "#7b2b26",
+            "button_text_color": "#ffffff",
+            "nav_bg_color": "#ffffff",
+            "nav_hover_bg_color": "#c54c44",
+            "nav_icon_color": "#7b2b26",
+            "dot_color": "#d1d1d1",
+            "dot_active_color": "#c54c44",
+            "image_border_radius": 8,
+            "button_border_radius": 25
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading_jWWfB3",
+        "types_of_clay_block_MAY3B3"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".heading-block {text-align: center;}"
+      ],
+      "name": "types-of-clay",
+      "settings": {}
+    },
+    "image_collage_with_text_DfW68F": {
+      "type": "image-collage-with-text",
+      "blocks": {
+        "heading_DAPrti": {
+          "type": "heading",
+          "settings": {
+            "heading": "Get started with our [Therapeutic Clay]",
+            "heading_size": "h3"
+          }
+        },
+        "description_wCGYBj": {
+          "type": "description",
+          "settings": {
+            "description": "<p>Embrace your best self with our <strong>therapeutic healing clays </strong>for use in Pelotherapy, hydrotherapy, natural medicine, and healing applications.</p><p>Healing clays have traditionally been used for:</p><ul><li>internal detoxification</li><li>trauma injuries</li><li>skin conditions</li><li>organ and elimination system stimulation</li><li>localized immune system stimulation and support</li></ul>"
+          }
+        },
+        "button_hawXtW": {
+          "type": "button",
+          "settings": {
+            "button_main_text": "See Our Products",
+            "button_main_style": "btn-primary",
+            "button_main_link": "shopify://collections/all",
+            "button_sub_text": "",
+            "button_sub_style": "btn-outline",
+            "button_sub_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_DAPrti",
+        "description_wCGYBj",
+        "button_hawXtW"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "ul {text-align: left; padding-left: 20px;}",
+        "ul li {text-align: left; list-style-position: inside;}",
+        "p {text-align: left; padding-left: 20px;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "collage_alignment": "media-sticky",
+        "primary_image": "shopify://shop_images/MS---Pelotherapy---edit-01b.jpg",
+        "content_ordering_desktop": "fd-row-md",
+        "collage_width": "6",
+        "content_position_mobile": "ta-center",
+        "content_ordering_mobile": "fd-column-reverse"
+      }
+    },
+    "featured_product_ViKXBx": {
+      "type": "featured-product",
+      "blocks": {
+        "title_bHyPh7": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h2"
+          }
+        },
+        "price_eMy4MH": {
+          "type": "price",
+          "settings": {
+            "show_tax_and_shipping_policy": true,
+            "enable_background": false,
+            "color_background": "",
+            "color_text": "",
+            "enable_sold_out_badge": true,
+            "show_sale_badge": "text_only",
+            "enable_new_in_badge": true
+          }
+        },
+        "variant_xQqjV9": {
+          "type": "variant",
+          "settings": {
+            "show_stock_number": true,
+            "variant_picker_type": "button",
+            "enable_variant_swatches": true,
+            "variant_swatches_size": "72px",
+            "enable_size_guide": false,
+            "size_guide_label": "Size chart",
+            "size_guide_content": ""
+          }
+        },
+        "buy_buttons_JrDWbe": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout_buttons": true,
+            "show_gift_card_recipient": false,
+            "show_payment_method": false,
+            "payment_method_title": "We accept"
+          }
+        },
+        "share_KkYbxc": {
+          "type": "share",
+          "settings": {
+            "button_style": "btn-plain"
+          }
+        }
+      },
+      "block_order": [
+        "title_bHyPh7",
+        "price_eMy4MH",
+        "variant_xQqjV9",
+        "buy_buttons_JrDWbe",
+        "share_KkYbxc"
+      ],
+      "name": "t:sections.featured_product.name",
+      "settings": {
+        "color_scheme": "",
+        "subheading": "",
+        "heading": "[Your] First Clay",
+        "heading_size": "h3",
+        "description": "",
+        "product": "green-desert-calcium-bentonite",
+        "main_media_ratio": "2/3",
+        "thumbnails_ratio": "1 fill",
+        "media_layout": "thumbnail_bottom",
+        "enable_media_sticky": true,
+        "content_align_desktop": "ta-center-md center-md",
+        "content_align_mobile": "ta-center",
+        "media_background_color": ""
+      }
+    },
+    "ms_wholesale_jePWCR": {
+      "type": "ms-wholesale",
+      "blocks": {
+        "feature_card_eW3pGA": {
+          "type": "feature_card",
+          "settings": {
+            "icon": "gear",
+            "title": "Custom Grinds",
+            "description": "Variable mesh from coarse granular to 325-mesh ultra-fine."
+          }
+        },
+        "feature_card_tTQ7nj": {
+          "type": "feature_card",
+          "settings": {
+            "icon": "document",
+            "title": "Compliance Docs",
+            "description": "Full MSDS and specification sheets provided instantly."
+          }
+        },
+        "feature_card_DmgyjD": {
+          "type": "feature_card",
+          "settings": {
+            "icon": "pill",
+            "title": "Capsule Fills",
+            "description": "Pre-measured fills for private label supplement programs."
+          }
+        },
+        "feature_card_qpcNGM": {
+          "type": "feature_card",
+          "settings": {
+            "icon": "globe",
+            "title": "Global Shipping",
+            "description": "Export-ready documentation for 40+ countries."
+          }
+        }
+      },
+      "block_order": [
+        "feature_card_eW3pGA",
+        "feature_card_tTQ7nj",
+        "feature_card_DmgyjD",
+        "feature_card_qpcNGM"
+      ],
+      "name": "MS Wholesale",
+      "settings": {
+        "color_scheme": "",
+        "title": "Wholesale",
+        "title_accent": "Logistics",
+        "body": "Engineered for high-volume manufacturing. Container-load fulfillment and custom micronization for supplement, pharmaceutical, and industrial clients.",
+        "feat_1": "Palletized & Bulk Bags (1,000kg+)",
+        "feat_2": "International Freight & Customs Support",
+        "btn_label": "Inquire About Bulk Supply",
+        "btn_link": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "ms_heritage_xFdEyT": {
+      "type": "ms-heritage",
+      "blocks": {
+        "credential_zryp8d": {
+          "type": "credential",
+          "settings": {
+            "icon": "flask",
+            "title": "ICP-MS Screening",
+            "description": "Heavy metal testing at parts-per-billion precision."
+          }
+        },
+        "credential_8h3t4t": {
+          "type": "credential",
+          "settings": {
+            "icon": "shield",
+            "title": "GMP Certified",
+            "description": "Global manufacturing standards for purity and safety."
+          }
+        },
+        "credential_rULrgr": {
+          "type": "credential",
+          "settings": {
+            "icon": "check",
+            "title": "Food-Grade",
+            "description": "Human consumption safe, fully traceable sourcing."
+          }
+        },
+        "credential_jWxHRk": {
+          "type": "credential",
+          "settings": {
+            "icon": "leaf",
+            "title": "Capsule-Ready",
+            "description": "Fine-milled for direct encapsulation or blending."
+          }
+        }
+      },
+      "block_order": [
+        "credential_zryp8d",
+        "credential_8h3t4t",
+        "credential_rULrgr",
+        "credential_jWxHRk"
+      ],
+      "name": "MS Heritage",
+      "settings": {
+        "color_scheme": "",
+        "image_1": "shopify://shop_images/science.webp",
+        "image_2": "shopify://shop_images/tests.webp",
+        "quote": "",
+        "quote_attr": "",
+        "eyebrow": "The Clinical Artisan",
+        "title": "Scientific Heritage & Certified Transparency",
+        "body": "Every batch undergoes multi-stage Spectrographic Analysis and Microbiological screening. Full Certificate of Analysis documentation ships with every order — because raw never means uncontrolled.",
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    },
+    "value_list_FzccUL": {
+      "type": "value-list",
+      "blocks": {
+        "item_h6QHh3": {
+          "type": "item",
+          "settings": {
+            "value_text": "100%",
+            "text_color": "",
+            "text_color_gradient": "",
+            "subheading": "Skin-Safe",
+            "description": "<p>All products are dermatologically tested and proven safe for all skin types.</p>"
+          }
+        },
+        "item_DhDhAN": {
+          "type": "item",
+          "settings": {
+            "value_text": "50+",
+            "text_color": "",
+            "text_color_gradient": "",
+            "subheading": "Shades Available",
+            "description": "<p>Offering a diverse range of 50+ shades to celebrate every skin tone and personal style.</p>"
+          }
+        },
+        "item_tGx8gP": {
+          "type": "item",
+          "settings": {
+            "value_text": "30-Day",
+            "text_color": "",
+            "text_color_gradient": "",
+            "subheading": "Free",
+            "description": "<p>Enjoy risk-free shopping with a 30-day free return policy, no questions asked.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_h6QHh3",
+        "item_DhDhAN",
+        "item_tGx8gP"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "subheading": "",
+        "heading": "Our core values",
+        "heading_size": "h2",
+        "description": "",
+        "item_alignment": "ta-center",
+        "value_text_size": "h3",
+        "enable_item_background": true,
+        "background_content": "#ffffff",
+        "color_content": "",
+        "content_align_desktop": "ta-center-md",
+        "columns_per_row": "3",
+        "content_align_mobile": "ta-center"
+      }
+    },
+    "blog_post_list_mJRUPz": {
+      "type": "blog-post-list",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-4",
+        "subheading": "",
+        "heading": "Read [our blogs]",
+        "heading_size": "h3",
+        "description": "",
+        "blog": "news",
+        "items_to_show": 4,
+        "show_featured_image": true,
+        "show_blog_tags": true,
+        "show_published_date": true,
+        "show_author": true,
+        "show_excerpt": true,
+        "content_align_desktop": "ta-center-md",
+        "carousel_desktop": "true",
+        "columns_per_row": "3",
+        "content_align_mobile": "ta-center",
+        "carousel_mobile": "true",
+        "show_view_all_button": true,
+        "button_text": "",
+        "style_button": "btn-primary"
+      }
+    },
+    "newsletter_rgC9bX": {
+      "type": "newsletter",
+      "settings": {
+        "color_scheme": "scheme-4",
+        "subheading": "",
+        "heading": "Need More [Info]?",
+        "heading_size": "h3",
+        "description": "<p>Join our list for gentle detox guidance, clay how‑tos, and occasional subscriber‑only offers.</p>",
+        "button_label": "Subscribe",
+        "content_ordering_desktop": "fd-row-md",
+        "content_ordering_mobile": "image-first-mb"
+      }
+    }
+  },
+  "order": [
+    "ms_hero_P6AYUc",
+    "image-banner",
+    "running_content_CqWG7B",
+    "featured_collection_YzXYUb",
+    "media_with_text_columns_qdexGp",
+    "ms_mineral_triptych_LgRcnK",
+    "info_tab_k7PWXb",
+    "176884196122141703",
+    "image_collage_with_text_DfW68F",
+    "featured_product_ViKXBx",
+    "ms_wholesale_jePWCR",
+    "ms_heritage_xFdEyT",
+    "value_list_FzccUL",
+    "blog_post_list_mJRUPz",
+    "newsletter_rgC9bX"
+  ]
+}

@@ -1,0 +1,276 @@
+{%- liquid
+
+  assign loading = "lazy"
+  assign decoding ="async"
+  assign fetchpriority = "auto"
+  assign animation_one_cls = 'js-animate anm anm-fadeInUp'
+
+  if section.index <= 2
+    assign loading = "eager"
+    assign fetchpriority = "high"
+    assign animation_one_cls = ''
+  endif
+
+  assign desktop_background_image = 'hero-apparel-1' | placeholder_svg_tag: 'js-image-lazy placeholder w-100 h-100 of-cover'
+
+  assign desktop_background_image_alt  = section.settings.desktop_background_image.alt | default: section.settings.desktop_background_image.image | split: '/' | last
+  assign desktop_background_image = section.settings.desktop_background_image | image_url: width: section.settings.desktop_background_image.width | image_tag: widths: '320, 450, 550, 750, 950, 1024, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000', sizes: "100vw", alt: desktop_background_image_alt, class: 'js-image-lazy w-100 h-100 of-cover', loading: loading, fetchpriority: fetchpriority, decoding: decoding
+
+  if section.settings.mobile_background_image
+    assign mobile_background_image_alt  = section.settings.mobile_background_image.alt | default: section.settings.mobile_background_image.image | split: '/' | last
+    assign mobile_background_image = section.settings.mobile_background_image | image_url: width: section.settings.mobile_background_image.width | image_tag: widths: '320, 450, 550, 750, 950, 1024, 1200', sizes: "100vw", alt: mobile_background_image_alt, class: 'js-image-lazy-mobile d-none-md d-block w-100 h-100 of-cover p-absolute top-0 zi-1', loading: loading, fetchpriority: fetchpriority, decoding: decoding
+  endif
+
+  unless section.settings.mask_overlay.alpha == 0.0 or section.settings.mask_overlay == blank
+    assign overlay_color = '--color-background:' | append: section.settings.mask_overlay
+  endunless
+  unless section.settings.text_overlay.alpha == 0.0 or section.settings.text_overlay == blank
+    assign content_color = 'color:' | append: section.settings.text_overlay
+  endunless
+
+  case settings.highlighted_heading_style
+    when 'highlighted_font'
+      assign highlighted_first_dom = '<span class="prominent-heading">'
+      assign highlighted_last_dom = '</span>'
+    when 'highlighted_color'
+      unless settings.highlighted_color == blank or settings.highlighted_color.alpha == 0
+        assign highlighted_first_dom = '<span style="color: ' | append: settings.highlighted_color | append: ';">'
+        assign highlighted_last_dom = '</span>'
+      endunless
+    when 'highlighted_underline'
+      assign highlighted_first_dom = '<span class="d-inline-block p-relative highlighted-word">'
+      assign highlighted_last_dom = '</span>'
+      assign highlighted_underline_color = 'var(--color-normal-text)'
+      unless settings.highlighted_underline_color == blank or settings.highlighted_underline_color.alpha == 0
+        assign highlighted_underline_color = settings.highlighted_underline_color
+      endunless
+  endcase
+
+-%}
+<div class="s--margin p-relative section-compacted-banner color-{{- section.settings.color_scheme }} s-container-radius no-transparent" data-ui-component="Compacted Banner Section" role="region" aria-labelledby="sectionHeading-{{ section.id | md5 | truncate: 12, "" }}">
+  <div class="s-container-radius p-relative   o-hidden">
+    <div class="sht-mask p-absolute w-100 h-100 o-hidden" style="--overlay: {{ section.settings.section_overlay_opacity }}; {{ overlay_color }}">
+      <div class="d-block w-100 h-100 js-animate anm anm-zoomOut media-wrapper">
+        {{ desktop_background_image }}
+        {{ mobile_background_image }}
+      </div>
+    </div>
+    <div class="section ctnr s-banner zi-3 w-100 h-100 p-relative d-flex fw-wrap r-gap-24 r-gap-sm-36 c-gap-sm-36 c-gap-md-48 top-xs middle-sm between-xs fd-column fd-row-sm" style="--mh-xs: 30vh; {{ content_color }}">
+      <div class="d-flex r-gap-16 r-gap-sm-24 c-gap-24 c-gap-sm-36 c-gap-md-48 flex-1 fd-column-sm fd-row-md fw-wrap top-xs middle-md between-xs">
+        <div class="wb-break-word">
+          <sht-split-line class="d-inline-block section-compacted-banner__heading" {% if settings.highlighted_heading_style == 'highlighted_underline' %}data-highlighted-underline-style="{{- settings.highlighted_underline_style -}}" data-highlighted-underline-thickness="{{- settings.highlighted_underline_thickness -}}" data-highlighted-underline-color="{{- highlighted_underline_color -}}"{% endif %} {{ block.shopify_attributes }}>
+            <h2 id="sectionHeading-{{ section.id | md5 | truncate: 12, "" }}" class="compacted-title mb-0 hide-empty {{ section.settings.heading_size }} {{ animation_one_cls }}">
+              {{- section.settings.heading | replace: '[', highlighted_first_dom | replace: ']', highlighted_last_dom -}}
+            </h2>
+          </sht-split-line>
+        </div>
+        {% if section.settings.enable_countdown_timer %}
+          {% render 'countdown', block: section %}
+        {% endif %}
+      </div>
+      {%- if section.settings.button_text != blank and section.settings.heading != blank -%}
+        <a class="btn btn--large h-fit-content {{ section.settings.style_button }}" href="{{- section.settings.button_link | default: '#' -}}" {% if section.settings.button_link == blank %} tabindex="-1" {% endif %}>{{- section.settings.button_text -}}</a>
+      {%- endif -%}
+    </div>
+  </div>
+  {% if section.settings.button_text == blank %}
+    <a class="banner-link zi-3" href="{{ section.settings.link }}"></a>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.compacted_banner.name",
+  "disabled_on": {
+    "groups": [
+      "header"
+    ]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:general.settings.headers.general.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:general.settings.color_schemes.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:general.settings.heading.label",
+      "info": "t:general.settings.prominent_font.info",
+      "default": "[Welcome] to our store"
+    },
+    {
+      "type": "select",
+      "label": "t:general.settings.heading_size.label",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:general.settings.heading_size.options.h2.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:general.settings.heading_size.options.h3.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:general.settings.heading_size.options.h4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:general.settings.heading_size.options.h5.label"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "header",
+      "content": "t:general.settings.headers.image.content",
+      "info": "t:general.settings.headers.header_image.info"
+    },
+    {
+      "type": "image_picker",
+      "label": "t:general.settings.desktop_background_image.label",
+      "id": "desktop_background_image",
+      "info": "t:sections.compacted_banner.settings.desktop_background_image.info"
+    },
+    {
+      "type": "image_picker",
+      "label": "t:general.settings.mobile_background_image.label",
+      "id": "mobile_background_image",
+      "info": "t:sections.compacted_banner.settings.mobile_background_image.info"
+    },
+    {
+      "type": "header",
+      "content": "t:general.settings.headers.countdown_timer.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_countdown_timer",
+      "label": "t:sections.popup.blocks.promotion.settings.countdown_timer.enable_countdown.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_on_end",
+      "label": "t:general.settings.hide_on_end.label",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "end_date",
+      "label": "t:general.settings.end_date.label",
+      "info": "t:general.settings.end_date.info"
+    },
+    {
+      "type": "text",
+      "id": "end_time",
+      "label": "t:general.settings.end_time.label",
+      "info": "t:general.settings.end_time.info"
+    },
+    {
+      "type": "richtext",
+      "id": "end_text",
+      "label": "t:general.settings.end_text.label",
+      "info": "t:general.settings.end_text.info",
+      "default": "<p>Event is finished.</p>"
+    },
+    {
+      "type": "header",
+      "content": "t:general.settings.headers.link.content"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:general.settings.link.label",
+      "info": "t:sections.compacted_banner.settings.link.info"
+    },
+    {
+      "type": "header",
+      "content": "t:general.settings.headers.button.content"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:general.settings.label.label",
+      "info": "t:general.settings.hide_if_empty.info",
+      "default": "Check now"
+    },
+    {
+      "type": "select",
+      "label": "t:general.settings.style.label",
+      "id": "style_button",
+      "options": [
+        {
+          "value": "btn-primary",
+          "label": "t:general.settings.filled.label"
+        },
+        {
+          "value": "btn-outline",
+          "label": "t:general.settings.oulined.label"
+        },
+        {
+          "value": "btn-link",
+          "label": "t:general.settings.text_link.label"
+        }
+      ],
+      "default": "btn-primary"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:general.settings.link.label"
+    },
+    {
+      "type": "header",
+      "content": "t:general.settings.headers.custom_color.content"
+    },
+    {
+      "type": "color",
+      "id": "mask_overlay",
+      "label": "t:general.settings.mask_overlay.label"
+    },
+    {
+      "type": "range",
+      "unit": "%",
+      "max": 90,
+      "min": 0,
+      "step": 1,
+      "default": 30,
+      "id": "section_overlay_opacity",
+      "label": "t:general.settings.overlay_opacity.label"
+    },
+    {
+      "type": "color",
+      "id": "text_overlay",
+      "label": "t:general.settings.text_overlay.label"
+    },
+    {
+      "type": "color",
+      "id": "countdown_background",
+      "label": "t:general.settings.countdown_background.label"
+    },
+    {
+      "type": "color",
+      "id": "countdown_number_color",
+      "label": "t:general.settings.countdown_number.label"
+    },
+    {
+      "type": "color",
+      "id": "color_end_text",
+      "label": "t:general.settings.end_text.label",
+      "default": "#FF0000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.compacted_banner.name"
+    }
+  ]
+}
+{% endschema %}

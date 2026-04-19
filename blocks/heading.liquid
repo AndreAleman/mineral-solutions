@@ -1,0 +1,92 @@
+{% comment %}
+  Renders a subheading block with customizable text
+
+  Accepts:
+  - block: {Object} Block object with settings
+  - block.settings.text: {String} Subheading text content
+
+  Usage:
+  Used as a block within sections
+{% endcomment %}
+{% liquid
+  case settings.highlighted_heading_style
+    when 'highlighted_font'
+      assign highlighted_first_dom = '<span class="prominent-heading">'
+      assign highlighted_last_dom = '</span>'
+    when 'highlighted_color'
+      unless settings.highlighted_color == blank or settings.highlighted_color.alpha == 0
+        assign highlighted_first_dom = '<span style="color: ' | append: settings.highlighted_color | append: ';">'
+        assign highlighted_last_dom = '</span>'
+      endunless
+    when 'highlighted_underline'
+      assign highlighted_first_dom = '<span class="d-inline-block p-relative highlighted-word">'
+      assign highlighted_last_dom = '</span>'
+      assign highlighted_underline_color = 'var(--color-normal-text)'
+      unless settings.highlighted_underline_color == blank or settings.highlighted_underline_color.alpha == 0
+        assign highlighted_underline_color = settings.highlighted_underline_color
+      endunless
+  endcase
+%}
+
+{% if block.settings.heading != blank %}
+  <sht-split-line class="d-inline-block heading-block" style="--width: {{ block.settings.heading_width }}%;" {% if settings.highlighted_heading_style == 'highlighted_underline' %}data-highlighted-underline-style="{{- settings.highlighted_underline_style -}}" data-highlighted-underline-thickness="{{- settings.highlighted_underline_thickness -}}" data-highlighted-underline-color="{{- highlighted_underline_color -}}"{% endif %} {{ block.shopify_attributes }}>
+    <h2 class="{{ block.settings.heading_size }} wb-break-word hide-empty d-block mb-0">
+      {{- block.settings.heading | replace: '[', highlighted_first_dom | replace: ']', highlighted_last_dom -}}
+    </h2>
+  </sht-split-line>
+{% endif %}
+
+{% schema %}
+{
+  "name": "t:general.heading",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:general.settings.text.label",
+      "info": "t:general.settings.prominent_font.info",
+      "default": "[Welcome] to our store"
+    },
+    {
+      "type": "select",
+      "label": "t:general.settings.heading_size.label",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "headline",
+          "label": "t:general.settings.heading_size.options.headline.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:general.settings.heading_size.options.h1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:general.settings.heading_size.options.h2.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:general.settings.heading_size.options.h3.label"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "range",
+      "id": "heading_width",
+      "label": "t:general.width",
+      "default": 100,
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:general.heading",
+      "category": "t:general.typography"
+    }
+  ]
+}
+{% endschema %}

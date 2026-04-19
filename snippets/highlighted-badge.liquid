@@ -1,0 +1,30 @@
+{% liquid
+  assign highlighted_badge_namespace = settings.highlighted_badge_metafield | split: '.' | first
+  assign highlighted_badge_key = settings.highlighted_badge_metafield | split: '.' | last
+  assign highlighted_value = product.metafields[highlighted_badge_namespace][highlighted_badge_key]
+
+  assign highlighted_background_color = settings.badge_background_color
+  unless settings.badge_text_color == blank or settings.badge_text_color.alpha == 0
+    assign highlighted_text_color = settings.badge_text_color
+  endunless
+
+  if highlighted_value.type == 'metaobject_reference'
+    assign highlighted_background_color = highlighted_value.value.background_color | default: highlighted_background_color
+    assign highlighted_text_color = highlighted_value.value.text_color | default: highlighted_text_color
+
+    assign highlighted_text = highlighted_value.value.text
+    assign highlighted_image = highlighted_value.value.image | image_url: width: highlighted_image.width | image_tag: widths: '320, 450, 550, 750, 950', sizes: "calc(100vw/3)", loading: 'lazy', decoding: 'async', class: 'h-100 w-100 of-cover'
+  endif
+%}
+{% if highlighted_value != blank %}
+  <div class="highlighted__badge p-absolute zi-1 hide-empty right-0 highlighted--{{ settings.prominent_badge_style }}">
+    <div class="h-100 w-100 p-relative" role="img" aria-label="{{ highlighted_text }}" style="background-color: {{ highlighted_background_color }}; color: {{ highlighted_text_color }};">
+      <div class="p-absolute top-0 left-0 h-100 w-100">
+        {{ highlighted_image }}
+      </div>
+      <span class="d-flex middle-xs h-100 center-xs w-100 ta-center p-relative z-1">
+        {{ highlighted_text }}
+      </span>
+    </div>
+  </div>
+{% endif %}

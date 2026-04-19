@@ -1,0 +1,59 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer Group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "store_information_Hka4cq": {
+          "type": "store_information",
+          "settings": {
+            "heading": "",
+            "image_width": 140,
+            "image_width_mobile": 70,
+            "description": "<p>At Shine Sophisticated, we blend nature's finest with cutting-edge science to redefine beauty rituals. Dedicated to purity and excellence, our products promise not just a transformation but an experience.</p><p><a href=\"/pages/our-story\" title=\"Our Story\">Learn more about us</a></p>",
+            "enable_follow_on_shop": false,
+            "show_socical_icons": true,
+            "socical_icons_style": "btn-primary"
+          }
+        },
+        "newsletter_TXrU6c": {
+          "type": "newsletter",
+          "settings": {
+            "newsletter_heading": "Subscribe to our newsletter",
+            "newsletter_description": "",
+            "submit_button": "Subscribe",
+            "enable_block_background": false,
+            "background_content": "",
+            "color_content": ""
+          }
+        }
+      },
+      "block_order": [
+        "store_information_Hka4cq",
+        "newsletter_TXrU6c"
+      ],
+      "settings": {
+        "color_scheme": "scheme-6",
+        "enable_back_to_top": true,
+        "show_currency_selector": true,
+        "show_language_selector": true,
+        "show_payment_methods": true,
+        "menu": "footer",
+        "open_external_link": false
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

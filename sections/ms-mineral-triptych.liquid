@@ -1,0 +1,436 @@
+{%- liquid
+  assign loading = "lazy"
+  assign decoding = "async"
+  assign fetchpriority = "auto"
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-triptych__header {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto {{ section.settings.header_spacing }}px;
+    padding: 0 24px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-triptych__eyebrow {
+    display: inline-block;
+    font-family: var(--font-body-family);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgb(var(--color-button));
+    margin-bottom: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-triptych__title {
+    font-family: var(--font-heading-family);
+    font-weight: var(--font-heading-weight);
+    font-size: clamp(26px, 3.5vw, 38px);
+    line-height: 1.2;
+    color: rgb(var(--color-base-text));
+    margin: 0 0 14px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-triptych__subtitle {
+    font-family: var(--font-body-family);
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgb(var(--color-base-text) / 0.6);
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ms-triptych__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 24px;
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .ms-triptych__grid {
+      grid-template-columns: repeat(3, 1fr);
+      align-items: start;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .ms-triptych__card {
+    background: rgb(var(--color-base-background-2));
+    border-radius: 20px;
+    padding: 24px;
+    transition: background 0.4s ease, transform 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ms-triptych__card:hover {
+    background: rgb(var(--color-base-background-1));
+    transform: translateY(-4px);
+  }
+
+  #shopify-section-{{ section.id }} .ms-triptych__card--offset {
+    margin-top: 0;
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .ms-triptych__card--offset {
+      margin-top: 48px;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .ms-triptych__img-wrap {
+    aspect-ratio: 4 / 5;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-triptych__img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ms-triptych__card:hover .ms-triptych__img-wrap img {
+    transform: scale(1.04);
+  }
+
+  #shopify-section-{{ section.id }} .ms-triptych__card-label {
+    font-family: var(--font-body-family);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(var(--color-button));
+    margin-bottom: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-triptych__card-title {
+    font-family: var(--font-heading-family);
+    font-weight: var(--font-heading-weight);
+    font-size: clamp(20px, 2.5vw, 26px);
+    color: rgb(var(--color-base-text));
+    margin: 0 0 10px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-triptych__card-desc {
+    font-family: var(--font-body-family);
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgb(var(--color-base-text) / 0.65);
+    margin: 0 0 16px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-triptych__features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-triptych__features li {
+    font-family: var(--font-body-family);
+    font-size: 12px;
+    color: rgb(var(--color-base-text) / 0.65);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+  }
+
+  #shopify-section-{{ section.id }} .ms-triptych__features li::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    background-color: rgb(var(--color-base-text));
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-triptych__card-btn {
+    display: inline-block;
+    background-color: transparent !important;
+    color: rgb(var(--color-base-text)) !important;
+    border: 1.5px solid rgb(var(--color-base-text)) !important;
+    padding: 10px 22px;
+    border-radius: 5px;
+    font-family: var(--font-body-family);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ms-triptych__card-btn:hover {
+    background-color: rgb(var(--color-base-text)) !important;
+    color: transparent !important;
+    border-color: rgb(var(--color-base-text)) !important;
+  }
+</style>
+
+<div class="s--margin color-{{ section.settings.color_scheme }} s-container-radius"
+     data-ui-component="MS Mineral Triptych"
+     role="region"
+     aria-labelledby="ms-triptych-heading-{{ section.id }}">
+
+  <div class="ctnr">
+
+    {%- if section.settings.eyebrow != blank or section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="ms-triptych__header">
+        {%- if section.settings.eyebrow != blank -%}
+          <div class="ms-triptych__eyebrow">{{ section.settings.eyebrow }}</div>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="ms-triptych__title" id="ms-triptych-heading-{{ section.id }}">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtitle != blank -%}
+          <p class="ms-triptych__subtitle">{{ section.settings.subtitle }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="ms-triptych__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'mineral_card' -%}
+          {%- liquid
+            assign card_image = block.settings.image
+            assign card_offset = block.settings.offset
+          -%}
+
+          <div class="ms-triptych__card{% if card_offset %} ms-triptych__card--offset{% endif %}"
+               {{ block.shopify_attributes }}>
+
+            {%- if card_image != blank -%}
+              <div class="ms-triptych__img-wrap">
+                {{- card_image | image_url: width: card_image.width | image_tag:
+                    widths: '300, 450, 600, 800',
+                    sizes: '(min-width: 768px) 33vw, 100vw',
+                    alt: card_image.alt,
+                    loading: loading,
+                    decoding: decoding -}}
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.label != blank -%}
+              <div class="ms-triptych__card-label">{{ block.settings.label }}</div>
+            {%- endif -%}
+
+            {%- if block.settings.title != blank -%}
+              <h3 class="ms-triptych__card-title">{{ block.settings.title }}</h3>
+            {%- endif -%}
+
+            {%- if block.settings.description != blank -%}
+              <p class="ms-triptych__card-desc">{{ block.settings.description }}</p>
+            {%- endif -%}
+
+            {%- if block.settings.feature_1 != blank or block.settings.feature_2 != blank -%}
+              <ul class="ms-triptych__features">
+                {%- if block.settings.feature_1 != blank -%}
+                  <li>{{ block.settings.feature_1 }}</li>
+                {%- endif -%}
+                {%- if block.settings.feature_2 != blank -%}
+                  <li>{{ block.settings.feature_2 }}</li>
+                {%- endif -%}
+              </ul>
+            {%- endif -%}
+
+            {%- if block.settings.btn_label != blank -%}
+              <a class="ms-triptych__card-btn"
+                 href="{{ block.settings.btn_link | default: '#' }}">
+                {{ block.settings.btn_label }}
+              </a>
+            {%- endif -%}
+
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "MS Mineral Triptych",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Label",
+      "default": "Our Minerals"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "The Elemental Foundation"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "Three cornerstone minerals, each selected for its ion-exchange capacity, digestive affinity, and structural purity."
+    },
+    {
+      "type": "range",
+      "id": "header_spacing",
+      "label": "Space Below Header",
+      "min": 20,
+      "max": 80,
+      "step": 4,
+      "default": 48,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "default": 64,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "mineral_card",
+      "name": "Mineral Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card Image"
+        },
+        {
+          "type": "checkbox",
+          "id": "offset",
+          "label": "Offset Card Down",
+          "info": "Staggers this card lower than its neighbors. Use on the middle card.",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Category Label",
+          "default": "Volcanic Earth"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Mineral Name",
+          "default": "Bentonite"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Sodium bentonite sun-dried to preserve its active crystalline lattice. Supports digestive detoxification through powerful adsorption."
+        },
+        {
+          "type": "text",
+          "id": "feature_1",
+          "label": "Feature 1",
+          "default": "Ionic Gut Detoxification"
+        },
+        {
+          "type": "text",
+          "id": "feature_2",
+          "label": "Feature 2",
+          "default": "High Swelling Capacity"
+        },
+        {
+          "type": "text",
+          "id": "btn_label",
+          "label": "Button Label",
+          "default": "Shop Bentonite"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MS Mineral Triptych",
+      "blocks": [
+        {
+          "type": "mineral_card",
+          "settings": {
+            "label": "Volcanic Earth",
+            "title": "Bentonite",
+            "description": "Sodium bentonite sun-dried to preserve its active crystalline lattice. Supports digestive detoxification through powerful adsorption.",
+            "feature_1": "Ionic Gut Detoxification",
+            "feature_2": "High Swelling Capacity",
+            "btn_label": "Shop Bentonite",
+            "offset": false
+          }
+        },
+        {
+          "type": "mineral_card",
+          "settings": {
+            "label": "Clinoptilolite Grade",
+            "title": "Zeolite",
+            "description": "A molecular sieve of unmatched precision. Microporous aluminosilicate minerals optimized for digestive filtration and gut support.",
+            "feature_1": "Heavy Metal Affinity",
+            "feature_2": "Molecular Pore Precision",
+            "btn_label": "Shop Zeolite",
+            "offset": true
+          }
+        },
+        {
+          "type": "mineral_card",
+          "settings": {
+            "label": "Sedimentary Silica",
+            "title": "Illite",
+            "description": "Rich in trace minerals and potassium. Exceptional structural support favored for advanced wellness formulations and gut mineral replenishment.",
+            "feature_1": "Rich Trace Elements",
+            "feature_2": "Mineral Gut Support",
+            "btn_label": "Shop Illite",
+            "offset": false
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

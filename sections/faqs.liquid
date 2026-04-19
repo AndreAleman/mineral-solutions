@@ -1,0 +1,1024 @@
+{%- liquid
+  assign section_id = section.id | md5 | truncate: 12, ""
+  assign form_id = section_id | prepend: 'cf-'
+  assign default_item_heading = "faqs.item_heading.accordion" | t
+  assign default_button_send_message = "general.button.send_message" | t
+  assign default_heading_contact_form = "faqs.heading_contact_form.contact_form" | t
+  case settings.highlighted_heading_style
+    when 'highlighted_font'
+      assign highlighted_first_dom = '<span class="prominent-heading">'
+      assign highlighted_last_dom = '</span>'
+    when 'highlighted_color'
+      unless settings.highlighted_color == blank or settings.highlighted_color.alpha == 0
+        assign highlighted_first_dom = '<span style="color: ' | append: settings.highlighted_color | append: ';">'
+        assign highlighted_last_dom = '</span>'
+      endunless
+    when 'highlighted_underline'
+      assign highlighted_first_dom = '<span class="d-inline-block p-relative highlighted-word">'
+      assign highlighted_last_dom = '</span>'
+      assign highlighted_underline_color = 'var(--color-normal-text)'
+      unless settings.highlighted_underline_color == blank or settings.highlighted_underline_color.alpha == 0
+        assign highlighted_underline_color = settings.highlighted_underline_color
+      endunless
+  endcase
+  assign color_form_background = section.settings.color_custom_form_background
+  assign color_form_content = section.settings.color_custom_form_content
+  unless color_form_background.alpha == 0.0 or color_form_background == blank
+    assign color_form_background = 'background: ' | append: color_form_background | append: '; --color-background-rgb: ' | append: color_form_background.red | append: ', ' | append: color_form_background.green | append: ', ' | append: color_form_background.blue
+  endunless
+  unless color_form_content.alpha == 0.0 or color_form_content == blank
+    assign color_form_content = 'color: ' | append: color_form_content | append: '; --color-normal-text-rgb: ' | append: color_form_content.red | append: ', ' | append: color_form_content.green | append: ', ' | append: color_form_content.blue
+  endunless
+  assign detect_background = 1
+  if section.settings.color_scheme.settings.color_background.alpha != 0.0
+    assign no_transparent = 'no-transparent'
+    assign detect_background = section.settings.color_scheme.settings.color_background | color_brightness | times: 9999
+  endif
+
+-%}
+<style>
+  #shopify-section-{{ section.id }} {
+    --section-background-hash: {{ detect_background }};
+  }
+  #shopify-section-{{ section.id }} + * {
+    --previous-section-background-hash: {{ detect_background }};
+  }
+</style>
+
+<div class="s--margin color-{{- section.settings.color_scheme }} s-container-radius {{ no_transparent }}" data-ui-component="Contact Form Section" role="region" aria-labelledby="sectionHeading-{{ section_id }}">
+  <div class="section ctnr d-grid  ">
+    {% render 'section-header',
+      content_align_mobile: section.settings.heading_alignment_mobile,
+      content_align_desktop: section.settings.heading_alignment_desktop,
+      subheading: section.settings.subheading,
+      heading: section.settings.heading_text,
+      description: section.settings.description_text,
+      heading_size: section.settings.heading_size,
+      section: section
+    %}
+    <div class="faqs__content d-flex center-xs {{ section.settings.content_ordering }} {{ section.settings.content_ordering_mobile }}">
+      {% if section.blocks.size > 0 %}
+        <div class="faqs__information" style="--w-md:6;">
+          <sht-accordion class="accordion d-flex fd-column" data-properties='{"multiple": {{ section.settings.one_item_expand }} }'>
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign aria_expanded = 'false'
+                assign ac_open_css = ''
+                assign styles = 'max-height: 0;'
+                
+                if section.settings.open_first_item and forloop.first
+                  assign aria_expanded = 'true'
+                  assign ac_open_css = 'open'
+                  assign styles = ''
+                endif
+              -%}
+              <div class="accordion__item js-accordion-item" {{ block.shopify_attributes }}>
+                <button class="region-trigger accordion__header-large accordion__button ele-focus-visible w-100 js-accordion-trigger d-flex middle-xs p-relative c-pointer rad-m {{ ac_open_css }}" id="collapsible-control-{{- block.id -}}" aria-expanded="{{ aria_expanded }}" aria-controls="collapsible-content-{{- block.id -}}">
+                  <div class="d-flex middle-xs m-zero flex-1 ta-left">
+                    {%- if block.settings.show_icon -%}
+                      <div class="custom-icon d-inline-block hide-empty" style="width: 20px; height: 20px; color:{{ block.settings.icon_color }};">
+                        {%- liquid
+                        assign loading = "lazy"
+                        assign decoding ="async"
+                        assign fetchpriority = "auto"
+  
+                        if section.index <= 2 and forloop.first
+                          assign loading = "eager"
+                          assign fetchpriority = "high"
+                        endif
+  
+                        assign icon_svg = ''
+                        assign icon_source = block.settings.icon_source
+                        if icon_source == 'theme_library'
+                          render 'icon-loader', icon: block.settings.theme_library_icon, class: 'h-100 w-100'
+                        elsif icon_source == 'image'
+                          assign custom_icon = 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder media of-cover h-100 w-100 js-image-lazy'
+                          assign custom_icon = block.settings.icon_image | image_url: width: block.settings.icon_image.width | image_tag: widths: '120', sizes: '(min-width: 361px) calc(100vw/2), calc(100vw/3)', alt: block.settings.heading_faq_item, class: 'media of-cover h-100 w-100', loading: loading, fetchpriority: fetchpriority, decoding: decoding
+                          render 'image', image_item: custom_icon, image_wrap_classes: "d-inline-block h-100 w-100", image_classes: "h-100 w-100"
+                        else
+                          assign icon_svg = block.settings.custom_code
+                        endif
+                        -%}
+                        {%- if icon_svg != '' -%}
+                          {{- icon_svg -}}
+                        {%- endif -%}
+                      </div>
+                    {%-endif -%}
+                    <span>
+                      {{- block.settings.heading_faq_item | default: default_item_heading | escape -}}
+                    </span>
+                  </div>
+                  <span class="toggle__icon accordion-button__icon d-flex middle-xs center-xs p-relative">
+                    {% render 'icon-chevron-down', size: 20 %}
+                  </span>
+                </button>
+                <div class="accordion__content-large o-hidden rte js-accordion-content accordion-content {{ ac_open_css }}" id="collapsible-content-{{- block.id -}}" role="region" aria-describedby="collapsible-control-{{- block.id -}}" tabindex="-1"  style="{{ styles }}">
+                  {{- block.settings.description_faq_item-}}
+                </div> 
+              </div>
+            {%- endfor -%}
+          </sht-accordion>
+        </div>
+      {% endif %}
+      {% if section.settings.enable_contact_form %} 
+        <div class="faqs__form" 
+          style="{{ color_form_background }};
+          {{ color_form_content }};
+          "
+        >
+          <div class="d-grid">
+            <div class="faqs__form-heading">
+              <sht-split-line class="d-inline-block" {% if settings.highlighted_heading_style == 'highlighted_underline' %}data-highlighted-underline-style="{{- settings.highlighted_underline_style -}}" data-highlighted-underline-thickness="{{- settings.highlighted_underline_thickness -}}" data-highlighted-underline-color="{{- highlighted_underline_color -}}"{% endif %}>
+                <h2 id="sectionHeading-{{ section_id }}" class="{{ section.settings.heading_size_contact_form }} faqs__form-title mb-0 wb-break-word hide-empty">
+                  {{- section.settings.heading_contact_form | default: default_heading_contact_form | replace: '[', highlighted_first_dom | replace: ']', highlighted_last_dom }}
+                </h2>
+              </sht-split-line>
+              <div class="faqs__form-description rte hide-empty">{{- section.settings.description_contact_form -}}</div>
+            </div>
+            {%- form 'contact', id: form_id, class: 'form-contact' -%}
+              {%- if form.posted_successfully? -%}
+                <div class="message--success d-flex middle-xs mb-20 mb-sm-36 mb-md-48 mb-lg-60 start-xs">
+                  <div class="icon icon--small icon--success fs-0">
+                    {% render 'icon-check', size: 16 %}
+                  </div>
+                  <span class="ml-8 subtext">
+                    {{ 'templates.contact.form.post_success' | t }}
+                  </span>
+                </div>
+              {%- elsif form.errors -%}
+                <div class="message--error d-flex middle-xs mb-20 mb-sm-36 mb-md-48 mb-lg-60 start-xs">
+                  <div class="icon icon--small icon--error fs-0">
+                    {% render 'icon-close', size: 16 %}
+                  </div>
+                  <span class="ml-8 subtext">
+                    {{ 'templates.contact.form.error_heading' | t }}
+                  </span>
+                </div>
+              {%- endif -%}
+              <div class="d-grid">
+                <div class="faqs__form-field">
+                  <label class="field__label mb-1x d-inline-block p-relative" for="{{ form_id }}-name">{{ 'templates.contact.form.name' | t }}<sup class="p-absolute ml-4 color-danger">*</sup></label>
+                  <input
+                  autocomplete="name"
+                  type="text"
+                  id="{{ form_id }}-name"
+                  class="field__text border field--large field--large field--hover w-100"
+                  name="contact[Name]"
+                  value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                  placeholder="{{ 'templates.contact.form.name_placeholder' | t }}"
+                  required
+                  >
+                </div>
+                <div class="faqs__form-field">
+                  <label class="field__label mb-1x d-inline-block p-relative" for="{{ form_id }}-email">{{ 'templates.contact.form.email' | t }}<sup class="p-absolute ml-4 color-danger">*</sup></label>
+                  <input
+                  autocomplete="email"
+                  type="email"
+                  id="{{ form_id }}-email"
+                  class="field__text border field--large field--large field--hover w-100"
+                  name="contact[email]"
+                  spellcheck="false"
+                  autocapitalize="off"
+                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                  aria-required="true"
+                  placeholder="{{ 'templates.contact.form.email_placeholder' | t }}"
+                  pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                  required
+                  >
+                </div>
+                {%- for block in section.blocks -%}
+                  {%- case block.type -%}
+                    {%- when 'text_field' -%}
+                      <div {{ block.shopify_attributes }}>
+                        <label class="d-block field__label mb-1x p-relative" for="{{ form_id }}-{{ forloop.index }}-custom">
+                          {{ block.settings.label }}
+                          <sup class="p-absolute ml-4 color-danger {{ block.settings.required | default: 'd-none' | replace: 'true', 'p-absolute ml-4 color-danger' }}">*</sup>
+                        </label>
+                        {%- if block.settings.textarea -%}
+                          <textarea
+                            rows="5"
+                            id="{{ form_id }}-{{ forloop.index }}-custom"
+                            class="textarea field__text field--large field--large field--hover w-100"
+                            name="contact[{{ block.settings.label }}]"
+                            placeholder="{{ block.settings.placeholder }}"
+                            {{ block.settings.required | default: '' | replace: 'true', 'required' }}
+                            >
+                            {{- form.body -}}
+                          </textarea>
+                        {%- else -%}
+                          <input
+                          class="field__text border field--large field--large field--hover w-100"
+                          type="text"
+                          id="{{ form_id }}-{{ forloop.index }}-custom"
+                          name="contact[{{ block.settings.label }}]"
+                          placeholder="{{ block.settings.placeholder }}"
+                          {{ block.settings.required | default: '' | replace: 'true', 'required' }}
+                          >
+                        {%- endif -%}
+                      </div>
+                    {%- when 'dropdown' -%}
+                      <div {{ block.shopify_attributes }}>
+                        <label class="d-block field__label mb-1x p-relative" for="{{ form_id }}-{{ forloop.index }}-dropdown">
+                          {{ block.settings.label }}
+                        </label>
+                        {% assign options = block.settings.add_value | split: ',' %}
+                        <div class="field__select p-relative">
+                          <select class="field__text border field--large field--large field--hover field--dropdown w-100 color-text-regular" name="contact[{{ block.settings.label }}]" id="{{ form_id }}-{{ forloop.index }}-dropdown">
+                            {% for value in options %}
+                              <option value="{{value}}">{{ value }}</option>
+                            {% endfor %}
+                          </select>
+                          <span class="p-absolute right-0 pe-none">
+                            <span class="btn btn-icon icon--default bg-transparent">
+                              {% render 'icon-chevron-down', size: 16 %}
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                  {%- endcase -%}
+                {%- endfor -%}
+                <div class="faqs__form-field">
+                  <label class="field__label mb-1x p-relative d-block" for="{{ form_id }}-message">{{ 'templates.contact.form.message' | t }}<sup class="p-absolute ml-4 color-danger">*</sup></label>
+                  <textarea
+                    rows="5"
+                    id="{{ form_id }}-message"
+                    required
+                    class="textarea field__text border field--large field--large field--hover w-100"
+                    name="contact[{{ 'templates.contact.form.message_title' | t }}]"
+                    placeholder="{{ 'templates.contact.form.message_placeholder' | t }}"
+                  >
+                    {{- form.body -}}
+                  </textarea>
+                </div>
+                <div class="d-flex fd-column start-xs faqs__form-submit">
+                  <button type="submit" class="btn btn--large c-pointer maw-fit-content-md hide-empty btn-primary">
+                    {{- section.settings.button_label | default: default_button_send_message -}}
+                  </button>
+                </div>
+              </div>
+            {%- endform -%}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% schema %}
+	{
+    "name": "t:sections.faqs.name",
+    "disabled_on": {
+      "groups": [
+        "header",
+        "footer"
+      ]
+    },
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:general.settings.headers.general.content"
+      },
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:general.settings.color_schemes.label",
+        "default": "scheme-1"
+      },
+      {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:general.settings.section_subheading.label",
+      "default": "Add a tagline"
+    },
+      {
+        "type": "text", 
+        "id": "heading_text",
+        "label": "t:general.settings.section_heading.label",
+        "default": "Frequently asked questions",
+        "info": "t:general.settings.prominent_font.info"
+      },
+      {
+        "type": "select",
+        "label": "t:general.settings.heading_size.label",
+        "id": "heading_size",
+        "options": [
+          {
+            "value": "h2",
+            "label": "t:general.settings.heading_size.options.h2.label"
+          },
+          {
+            "value": "h3",
+            "label": "t:general.settings.heading_size.options.h3.label"
+          },
+          {
+            "value": "h4",
+            "label": "t:general.settings.heading_size.options.h4.label"
+          },
+          {
+            "value": "h5",
+            "label": "t:general.settings.heading_size.options.h5.label"
+          }
+        ],
+        "default": "h2"
+      },
+      {
+        "type": "richtext",
+        "id": "description_text",
+        "label": "t:general.settings.section_description.label",
+        "default": "<p>Write some useful information about your business, contact information or links to various FAQ pages.</p>"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.faqs.settings.headers.faq_item.content"
+      },
+      {
+        "type": "checkbox",
+        "id": "one_item_expand",
+        "label": "t:sections.faqs.settings.one_item_expand.label",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "open_first_item",
+        "label": "t:sections.faqs.settings.open_first_item.label",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "t:general.settings.contact_form.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_contact_form",
+        "label": "t:sections.faqs.settings.enable_contact_form.label",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "heading_contact_form",
+        "label": "t:general.settings.heading.label",
+        "default": "Didn’t find your answer?",
+         "info": "t:general.settings.prominent_font.info"
+      },
+      {
+        "type": "select",
+        "label": "t:general.settings.heading_size.label",
+        "id": "heading_size_contact_form",
+        "options": [
+          {
+            "value": "h2",
+            "label": "t:general.settings.heading_size.options.h2.label"
+          },
+          {
+            "value": "h3",
+            "label": "t:general.settings.heading_size.options.h3.label"
+          },
+          {
+            "value": "h4",
+            "label": "t:general.settings.heading_size.options.h4.label"
+          },
+          {
+            "value": "h5",
+            "label": "t:general.settings.heading_size.options.h5.label"
+          }
+        ],
+        "default": "h4"
+      },
+      {
+        "type": "richtext",
+        "id": "description_contact_form",
+        "label": "t:general.settings.description.label",
+        "default": "<p>Link to some useful pages that your customers might want to know about.</p>"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "t:general.settings.button_label.label",
+        "default": "Send message"
+      },
+      {
+        "type": "color",
+        "id": "color_custom_form_background",
+        "label": "t:sections.faqs.settings.color_custom_form_background.label",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "color_custom_form_content",
+        "label": "t:sections.faqs.settings.color_custom_form_content.label",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "header",
+        "content": "t:general.settings.headers.header_large_screen.content"
+      },
+      {
+        "type": "select",
+        "id": "heading_alignment_desktop",
+        "label": "t:general.settings.section_heading_alignment.label",
+        "options": [
+          {
+            "value": "ta-center-md middle-md",
+            "label": "t:general.settings.option_center.label"
+          },
+          {
+            "value": "ta-left-md top-md",
+            "label": "t:general.settings.option_left.label"
+          }
+        ],
+        "default": "ta-left-md top-md"
+      },
+      {
+        "type": "select",
+        "id": "content_ordering",
+        "label": "t:general.settings.section_ordering.label",
+        "default": "fd-row-sm",
+        "options": [
+          {
+            "value": "fd-row-sm",
+            "label": "t:sections.faqs.settings.faqs_first.label"
+          },
+          {
+            "value": "fd-row-reverse-sm",
+            "label": "t:sections.faqs.settings.contact_form_first.label"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "t:general.settings.header.mobile_screen.content"
+      },
+      {
+        "type": "select",
+        "id": "heading_alignment_mobile",
+        "label": "t:general.settings.section_heading_alignment.label",
+        "options": [
+          {
+            "value": "ta-center middle-xs",
+            "label": "t:general.settings.option_center.label"
+          },
+          {
+            "value": "ta-left top-xs",
+            "label": "t:general.settings.option_left.label"
+          }
+        ],
+        "default": "ta-left top-xs"
+      },
+      {
+        "type": "select",
+        "id": "content_ordering_mobile",
+        "label": "t:general.settings.section_ordering.label",
+        "default": "fd-column",
+        "options": [
+          {
+            "value": "fd-column",
+            "label": "t:sections.faqs.settings.faqs_first.label"
+          },
+          {
+            "value": "fd-column-reverse",
+            "label": "t:sections.faqs.settings.contact_form_first.label"
+          }
+        ]
+      }
+    ],
+		"blocks": [
+      {
+        "type": "faq_item",
+        "name": "t:sections.faqs.blocks.faq_item.name",
+        "settings": [
+          {
+            "type": "header",
+            "content": "t:general.settings.headers.icon.content"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_icon",
+            "label": "t:general.settings.show_icon.label",
+            "default": true
+          },
+          {
+            "type": "select",
+            "label": "t:general.settings.icon_source.label",
+            "id": "icon_source",
+            "options": [
+              {
+                "value": "theme_library",
+                "label": "t:general.settings.theme_library.label"
+              },
+              {
+                "value": "image",
+                "label": "t:general.settings.image.label"
+              },
+              {
+                "value": "custom_svg",
+                "label": "t:general.settings.custom_svg.label"
+              }
+            ],
+            "default": "theme_library"
+          },
+          {
+            "type": "select",
+            "label": "t:general.settings.theme_library.label",
+            "id": "theme_library_icon",
+            "options": [
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "3d-model",
+                "label": "3d model"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "account",
+                "label": "Account"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "arrow-down",
+                "label": "Arrow down"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "arrow-left",
+                "label": "Arrow left"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "arrow-right",
+                "label": "Arrow right"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "arrow-up",
+                "label": "Arrow up"
+              },
+              {
+                "group": "t:general.settings.health_beauty.label",
+                "value": "bottle",
+                "label": "Bottle"
+              },
+              {
+                "group": "t:general.settings.shipping.label",
+                "value": "box",
+                "label": "Box"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "cart",
+                "label": "Cart"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "check-circle",
+                "label": "Check circle"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "check",
+                "label": "Check"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "chevron-down",
+                "label": "Chevron down"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "chevron-left",
+                "label": "Chevron left"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "chevron-right",
+                "label": "Chevron right"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "chevron-up",
+                "label": "Chevron up"
+              },
+              {
+                "group": "t:general.settings.shipping.label",
+                "value": "clock",
+                "label": "Clock"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "close",
+                "label": "Close"
+              },
+              {
+                "group": "t:general.settings.health_beauty.label",
+                "value": "cream-tube",
+                "label": "Cream tube"
+              },
+              {
+                "group": "t:general.settings.shop.label",
+                "value": "discount",
+                "label": "Discount"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "drag",
+                "label": "Drag"
+              },
+              {
+                "group": "t:general.settings.fashion.label",
+                "value": "dress",
+                "label": "Dress"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "ellipsis",
+                "label": "Ellipsis"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "exit-full-screen",
+                "label": "Exit full screen"
+              },
+              {
+                "group": "t:general.settings.social.label",
+                "value": "facebook",
+                "label": "Facebook"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "filter-2",
+                "label": "Filter 2"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "filter",
+                "label": "Filter"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "full-screen",
+                "label": "Full screen"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "functional-3d",
+                "label": "Functional 3d"
+              },
+              {
+                "group": "t:general.settings.shop.label",
+                "value": "gift",
+                "label": "Gift"
+              },
+              {
+                "group": "t:general.settings.shipping.label",
+                "value": "global",
+                "label": "Global"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "grid-1",
+                "label": "Grid 1"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "grid-2",
+                "label": "Grid 2"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "hamburger",
+                "label": "Hamburger"
+              },
+              {
+                "group": "t:general.settings.health_beauty.label",
+                "value": "hand",
+                "label": "Hand"
+              },
+              {
+                "group": "t:general.settings.shop.label",
+                "value": "heart",
+                "label": "Heart"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "home",
+                "label": "Home"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "info",
+                "label": "Info"
+              },
+              {
+                "group": "t:general.settings.social.label",
+                "value": "instagram",
+                "label": "Instagram"
+              },
+              {
+                "group": "t:general.settings.fashion.label",
+                "value": "iron",
+                "label": "Iron"
+              },
+              {
+                "group": "t:general.settings.shop.label",
+                "value": "like",
+                "label": "Like"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "linear",
+                "label": "Linear"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "link",
+                "label": "Link"
+              },
+              {
+                "group": "t:general.settings.social.label",
+                "value": "linkedin",
+                "label": "Linkedin"
+              },
+              {
+                "group": "t:general.settings.health_beauty.label",
+                "value": "lipstick",
+                "label": "Lipstick"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "mail",
+                "label": "Mail"
+              },
+              {
+                "group": "t:general.settings.health_beauty.label",
+                "value": "makeup-brush",
+                "label": "Makeup brush"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "map-pin",
+                "label": "Map pin"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "minus",
+                "label": "Minus"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "mute",
+                "label": "Mute"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "next",
+                "label": "Next"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "page",
+                "label": "Page"
+              },
+              {
+                "group": "t:general.settings.fashion.label",
+                "value": "pants",
+                "label": "Pants"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "pause",
+                "label": "Pause"
+              },
+              {
+                "group": "t:general.settings.shop.label",
+                "value": "percent",
+                "label": "Percent"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "phone",
+                "label": "Phone"
+              },
+              {
+                "group": "t:general.settings.social.label",
+                "value": "pinterest",
+                "label": "Pinterest"
+              },
+              {
+                "group": "t:general.settings.shipping.label",
+                "value": "plane",
+                "label": "Plane"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "play-circle",
+                "label": "Play Circle"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "play",
+                "label": "Play"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "plus",
+                "label": "Plus"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "quote",
+                "label": "Quote"
+              },
+              {
+                "group": "t:general.settings.shipping.label",
+                "value": "return",
+                "label": "Return"
+              },
+              {
+                "group": "t:general.settings.fashion.label",
+                "value": "rss",
+                "label": "Rss"
+              },
+              {
+                "group": "t:general.settings.fashion.label",
+                "value": "ruler",
+                "label": "Ruler"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "save",
+                "label": "Save"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "search",
+                "label": "Search"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "share",
+                "label": "Share"
+              },
+              {
+                "group": "t:general.settings.fashion.label",
+                "value": "shirt",
+                "label": "Shirt"
+              },
+              {
+                "group": "t:general.settings.fashion.label",
+                "value": "shoe",
+                "label": "Shoe"
+              },
+              {
+                "group": "t:general.settings.social.label",
+                "value": "snapchat",
+                "label": "Snapchat"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "spinner",
+                "label": "Spinner"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "star-half",
+                "label": "Star half"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "star-line",
+                "label": "Star line"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "star",
+                "label": "Star"
+              },
+              {
+                "group": "t:general.settings.shop.label",
+                "value": "storefront",
+                "label": "Storefront"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "subscription",
+                "label": "Subscription"
+              },
+              {
+                "group": "t:general.settings.social.label",
+                "value": "tiktok",
+                "label": "Tiktok"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "trash-bin",
+                "label": "Trash bin"
+              },
+              {
+                "group": "t:general.settings.shipping.label",
+                "value": "truck",
+                "label": "Truck"
+              },
+              {
+                "group": "t:general.settings.social.label",
+                "value": "tumblr",
+                "label": "Tumblr"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "unmute",
+                "label": "Unmute"
+              },
+              {
+                "group": "t:general.settings.social.label",
+                "value": "vimeo",
+                "label": "Vimeo"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "warning",
+                "label": "Warning"
+              },
+              {
+                "group": "t:general.settings.fashion.label",
+                "value": "washing",
+                "label": "Washing"
+              },
+              {
+                "group": "t:general.settings.social.label",
+                "value": "x-twitter",
+                "label": "Twitter"
+              },
+              {
+                "group": "t:general.settings.social.label",
+                "value": "youtube",
+                "label": "Youtube"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "zoom-in",
+                "label": "Zoom in"
+              },
+              {
+                "group": "t:general.settings.functional.label",
+                "value": "zoom-out",
+                "label": "Zoom out"
+              }
+            ],
+            "default": "subscription"
+          },
+          {
+            "type": "image_picker",
+            "id": "icon_image",
+            "label": "t:general.settings.image.label",
+            "info": "t:general.settings.use_square_image.info"
+          },
+          {
+            "type": "html",
+            "label": "t:general.settings.custom_svg.label",
+            "id": "custom_code"
+          },
+          {
+            "type": "color",
+            "id": "icon_color",
+            "label": "t:general.settings.custom_icon_color.label"
+          },
+          {
+            "type": "header",
+            "content": "t:general.settings.headers.content.content"
+          },
+          {
+            "type": "text",
+            "id": "heading_faq_item",
+            "label": "t:general.settings.heading.label",
+            "default": "Do you ship overseas?"
+          },
+          {
+            "type": "richtext",
+            "id": "description_faq_item",
+            "label": "t:general.settings.description.label",
+            "default": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.</p>"
+          }
+        ]
+      }
+		],
+    "presets": [
+      {
+        "name": "t:sections.faqs.name",
+        "blocks": [
+          {
+            "type": "faq_item"
+          },
+          {
+            "type": "faq_item"
+          },
+          {
+            "type": "faq_item"
+          },
+          {
+            "type": "faq_item"
+          },
+          {
+            "type": "faq_item"
+          }
+        ]
+      }
+    ]
+	}
+{% endschema %}

@@ -1,0 +1,99 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "color_scheme": "scheme-3"
+      }
+    },
+    "main": {
+      "type": "main-list-collections",
+      "settings": {
+        "color_scheme": "scheme-5",
+        "heading": "Our Collections",
+        "products_per_load": "20",
+        "products_load_method": "pagination",
+        "content_align_desktop": "ta-center-md m-auto",
+        "columns_per_row_desktop": "4",
+        "content_align_mobile": "ta-left",
+        "columns_per_row_mobile": "6"
+      }
+    },
+    "running_content_g7AmKK": {
+      "type": "running-content",
+      "blocks": {
+        "text_RchCyM": {
+          "type": "text",
+          "settings": {
+            "promotion_text": "<p><em>100% vegan cosmetics for beauty</em></p>",
+            "color_text": "",
+            "text_color_gradient": ""
+          }
+        },
+        "image_7iMNwg": {
+          "type": "image",
+          "settings": {
+
+          }
+        },
+        "text_n4iKdN": {
+          "type": "text",
+          "settings": {
+            "promotion_text": "<p><em>Nature's Beauty, Perfected by Science</em></p>",
+            "color_text": "",
+            "text_color_gradient": ""
+          }
+        },
+        "image_Kzy3ah": {
+          "type": "image",
+          "settings": {
+
+          }
+        },
+        "text_QQXPdy": {
+          "type": "text",
+          "settings": {
+            "promotion_text": "<p><em>Pure Beauty, Powered by Nature</em></p>",
+            "color_text": "",
+            "text_color_gradient": ""
+          }
+        },
+        "image_m7xmyX": {
+          "type": "image",
+          "settings": {
+
+          }
+        }
+      },
+      "block_order": [
+        "text_RchCyM",
+        "image_7iMNwg",
+        "text_n4iKdN",
+        "image_Kzy3ah",
+        "text_QQXPdy",
+        "image_m7xmyX"
+      ],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "speed": "50",
+        "moving_direction": "animation-direction",
+        "pause_when_hover": false,
+        "heading_size": "h2"
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main",
+    "running_content_g7AmKK"
+  ]
+}

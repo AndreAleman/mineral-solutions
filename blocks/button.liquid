@@ -1,0 +1,48 @@
+{% render 'button', block: block %}
+
+{% schema %}
+{
+  "name": "t:general.button",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:general.label",
+      "info": "t:general.hide_if_empty",
+      "default": "Button"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:general.link"
+    },
+    {
+      "type": "select",
+      "label": "t:general.style",
+      "id": "button_style",
+      "options": [
+        {
+          "value": "btn-primary",
+          "label": "t:general.settings.filled.label"
+        },
+        {
+          "value": "btn-outline",
+          "label": "t:general.settings.oulined.label"
+        },
+        {
+          "value": "btn-link",
+          "label": "t:general.settings.text_link.label"
+        }
+      ],
+      "default": "btn-primary"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:general.button",
+      "category": "t:general.basic"
+    }
+  ]
+}
+{% endschema %}

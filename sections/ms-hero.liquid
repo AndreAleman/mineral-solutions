@@ -1,0 +1,335 @@
+{%- liquid
+  assign loading = "lazy"
+  assign decoding = "async"
+  assign fetchpriority = "auto"
+
+  if section.index <= 2
+    assign loading = "eager"
+    assign fetchpriority = "high"
+  endif
+
+  assign desktop_image = section.settings.desktop_image
+  assign mobile_image  = section.settings.mobile_image
+
+  if desktop_image != blank
+    assign desktop_image_tag = desktop_image | image_url: width: desktop_image.width | image_tag: widths: '320, 550, 750, 1024, 1400, 1800, 2400', sizes: "100vw", alt: desktop_image.alt, class: 'ms-hero__img w-100 h-100 of-cover p-absolute top-0', loading: loading, fetchpriority: fetchpriority, decoding: decoding
+  endif
+
+  if mobile_image != blank
+    assign mobile_image_tag = mobile_image | image_url: width: mobile_image.width | image_tag: widths: '320, 450, 750', sizes: "100vw", alt: mobile_image.alt, class: 'ms-hero__img ms-hero__img--mobile w-100 h-100 of-cover p-absolute top-0 d-none-md d-block', loading: loading, fetchpriority: fetchpriority, decoding: decoding
+  endif
+
+  assign overlay_color = section.settings.overlay_color
+  assign overlay_r = overlay_color.red
+  assign overlay_g = overlay_color.green
+  assign overlay_b = overlay_color.blue
+  assign overlay_opacity = section.settings.overlay_opacity | divided_by: 100.0
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} .ms-hero {
+    position: relative;
+    min-height: {{ section.settings.height_mobile }};
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .ms-hero {
+      min-height: {{ section.settings.height_desktop }};
+    }
+  }
+
+  #shopify-section-{{ section.id }} .ms-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba({{ overlay_r }}, {{ overlay_g }}, {{ overlay_b }}, {{ overlay_opacity }});
+    z-index: 2;
+  }
+
+  #shopify-section-{{ section.id }} .ms-hero__content {
+    position: relative;
+    z-index: 3;
+    padding: 64px 32px;
+    max-width: 640px;
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .ms-hero__content {
+      padding: 80px 56px;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .ms-hero__badge {
+    display: inline-block;
+    background: rgb(var(--color-button) / 0.15);
+    color: rgb(var(--color-button-label));
+    border: 1px solid rgb(var(--color-button) / 0.3);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-hero__heading {
+    font-family: var(--font-heading-family);
+    font-weight: var(--font-heading-weight);
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.1;
+    color: rgb(var(--color-base-background-1));
+    margin: 0 0 20px;
+    letter-spacing: -0.02em;
+  }
+
+  #shopify-section-{{ section.id }} .ms-hero__heading em {
+    font-style: italic;
+    color: rgb(var(--color-button-label));
+  }
+
+  #shopify-section-{{ section.id }} .ms-hero__subtext {
+    font-family: var(--font-body-family);
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgb(var(--color-base-background-1) / 0.8);
+    max-width: 420px;
+    margin: 0 0 36px;
+  }
+
+  #shopify-section-{{ section.id }} .ms-hero__btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .ms-hero__btn-primary {
+    display: inline-block;
+    background: rgb(var(--color-button));
+    color: rgb(var(--color-button-label));
+    padding: 14px 32px;
+    border-radius: var(--buttons-radius, 8px);
+    font-family: var(--font-body-family);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    transition: filter 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .ms-hero__btn-primary:hover {
+    filter: brightness(1.1);
+  }
+
+  #shopify-section-{{ section.id }} .ms-hero__btn-ghost {
+    display: inline-block;
+    background: none;
+    border: none;
+    border-bottom: 1.5px solid rgb(var(--color-base-background-1) / 0.5);
+    color: rgb(var(--color-base-background-1));
+    font-family: var(--font-heading-family);
+    font-style: italic;
+    font-size: 15px;
+    padding: 8px 0;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .ms-hero__btn-ghost:hover {
+    border-color: rgb(var(--color-base-background-1));
+  }
+</style>
+
+<div class="s--margin color-{{ section.settings.color_scheme }} s-container-radius no-transparent"
+     data-ui-component="MS Hero Section"
+     role="region"
+     aria-labelledby="ms-hero-heading-{{ section.id }}">
+
+  <div class="ms-hero s-container-radius o-hidden">
+
+    {{- desktop_image_tag -}}
+    {{- mobile_image_tag -}}
+    <div class="ms-hero__overlay js-animate anm anm-zoomOut"></div>
+
+    <div class="ctnr w-100">
+      <div class="ms-hero__content">
+
+        {%- if section.settings.badge_text != blank -%}
+          <div class="ms-hero__badge">{{ section.settings.badge_text }}</div>
+        {%- endif -%}
+
+        <h1 class="ms-hero__heading" id="ms-hero-heading-{{ section.id }}">
+          {{ section.settings.heading_line1 }}
+          {%- if section.settings.heading_line2 != blank -%}
+            <br/><em>{{ section.settings.heading_line2 }}</em>
+          {%- endif -%}
+        </h1>
+
+        {%- if section.settings.subtext != blank -%}
+          <p class="ms-hero__subtext">{{ section.settings.subtext }}</p>
+        {%- endif -%}
+
+        <div class="ms-hero__btns">
+          {%- if section.settings.btn1_label != blank -%}
+            <a class="ms-hero__btn-primary" href="{{ section.settings.btn1_link | default: '#' }}">
+              {{ section.settings.btn1_label }}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.btn2_label != blank -%}
+            <a class="ms-hero__btn-ghost" href="{{ section.settings.btn2_link | default: '#' }}">
+              {{ section.settings.btn2_label }}
+            </a>
+          {%- endif -%}
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "MS Hero Banner",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Color Scheme"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Background Image (optional)"
+    },
+    {
+      "type": "header",
+      "content": "Height"
+    },
+    {
+      "type": "select",
+      "id": "height_desktop",
+      "label": "Desktop Height",
+      "options": [
+        { "value": "50vh",  "label": "50% screen" },
+        { "value": "70vh",  "label": "70% screen" },
+        { "value": "85vh",  "label": "85% screen" },
+        { "value": "100vh", "label": "Full screen" }
+      ],
+      "default": "85vh"
+    },
+    {
+      "type": "select",
+      "id": "height_mobile",
+      "label": "Mobile Height",
+      "options": [
+        { "value": "50vh",  "label": "50% screen" },
+        { "value": "70vh",  "label": "70% screen" },
+        { "value": "85vh",  "label": "85% screen" },
+        { "value": "100vh", "label": "Full screen" }
+      ],
+      "default": "70vh"
+    },
+    {
+      "type": "header",
+      "content": "Image Overlay"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay Color",
+      "info": "Set to white (#ffffff) for a light wash, black (#000000) for a dark tint.",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay Opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 40,
+      "unit": "%"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Food-Grade & Laboratory Tested"
+    },
+    {
+      "type": "text",
+      "id": "heading_line1",
+      "label": "Heading Line 1",
+      "default": "Earth's"
+    },
+    {
+      "type": "text",
+      "id": "heading_line2",
+      "label": "Heading Line 2 (italic accent)",
+      "default": "Digestive Alchemy"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Pure mineral powders harnessing the ion-exchange power of rare earths. Formulated for internal wellness, rigorously tested for professional-grade purity."
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "btn1_label",
+      "label": "Primary Button Label",
+      "default": "Explore Collections"
+    },
+    {
+      "type": "url",
+      "id": "btn1_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "btn2_label",
+      "label": "Ghost Button Label",
+      "default": "Read Our Heritage"
+    },
+    {
+      "type": "url",
+      "id": "btn2_link",
+      "label": "Ghost Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MS Hero Banner"
+    }
+  ]
+}
+{% endschema %}
