@@ -14,11 +14,11 @@
       "name": "MS Hero Banner",
       "settings": {
         "color_scheme": "scheme-6",
-        "desktop_image": "shopify://shop_images/unnamed.webp",
+        "desktop_image": "shopify://shop_images/spa-hero.jpg",
         "height_desktop": "85vh",
         "height_mobile": "70vh",
         "overlay_color": "#000000",
-        "overlay_opacity": 25,
+        "overlay_opacity": 50,
         "badge_text": "Food-Grade & Laboratory Tested",
         "heading_line1": "Earth's",
         "heading_line2": "Digestive Alchemy",
@@ -66,7 +66,6 @@
       "custom_css": [],
       "settings": {
         "color_scheme": "scheme-2",
-        "desktop_image": "shopify://shop_images/mixture.webp",
         "height_desktop": "50vh",
         "content_position_desktop": "center-md bottom-md ta-center-md",
         "height_mobile": "50vh",
@@ -237,7 +236,6 @@
         "mineral_card_6Rf6aY": {
           "type": "mineral_card",
           "settings": {
-            "image": "shopify://shop_images/MS-RDCB-1000x1000.png",
             "offset": false,
             "label": "Volcanic Earth",
             "title": "Bentonite",
@@ -251,7 +249,6 @@
         "mineral_card_M3y79F": {
           "type": "mineral_card",
           "settings": {
-            "image": "shopify://shop_images/MS-MZ-1000x1000.png",
             "offset": true,
             "label": "Clinoptilolite Grade",
             "title": "Zeolite",
@@ -265,7 +262,6 @@
         "mineral_card_r6WDRn": {
           "type": "mineral_card",
           "settings": {
-            "image": "shopify://shop_images/MS-SB-1000x1000.png",
             "offset": false,
             "label": "Sedimentary Silica",
             "title": "Illite",
@@ -299,7 +295,6 @@
         "tab_DC8Bxf": {
           "type": "tab",
           "settings": {
-            "image": "shopify://shop_images/MS_-_Triple_Blend_-_1000x1000_lines_-_cover.png",
             "heading": "Choose Your Clay",
             "description": "<p>Pick the clay that best fits your goal—daily digestion support, deeper <br/>detox, or skin and bath rituals—using the ‘Choose your clay’ guide below</p>"
           }
@@ -307,7 +302,6 @@
         "tab_CiMmfC": {
           "type": "tab",
           "settings": {
-            "image": "shopify://shop_images/spoon.webp",
             "heading": "Start Low and Slow",
             "description": "<p>Mix 1 teaspoon of clay into about 500 ml (16 oz) of water the night <br/>before, let it settle, then drink the clay water (not the sediment) once<br/> a day</p>"
           }
@@ -315,7 +309,6 @@
         "tab_EHNjm4": {
           "type": "tab",
           "settings": {
-            "image": "shopify://shop_images/stomach.webp",
             "heading": "Listen and Adjust",
             "description": "<p>Listen to your body. Use daily for around 10 days while drinking plenty of water. If you feel<br/> any discomfort, pause for three days, then resume—some people do better<br/> taking clay in the evening instead of morning</p>"
           }
@@ -323,7 +316,6 @@
         "tab_9YP3n6": {
           "type": "tab",
           "settings": {
-            "image": "shopify://shop_images/healthy.webp",
             "heading": "Find your routine",
             "description": "<p>Once your body is used to clay, stick with a simple maintenance routine <br/>(1 teaspoon a day or a few times per week), or gradually increase <br/>frequency and amount if you need deeper digestive or detox support.</p>"
           }
@@ -372,19 +364,16 @@
           "type": "types-of-clay-block",
           "name": "Types of Clay Block",
           "settings": {
-            "slide_1_image": "shopify://shop_images/MS-MZ-1000x1000.png",
             "slide_1_title": "Bentonite",
             "slide_1_subtitle": "Montmorillonite",
             "slide_1_description": "<p>Bentonite, also commonly known as <em>Green Alkaline Healing Clay</em>, or <em><strong>Green Desert Calcium Bentonite</strong></em>, is in a class of clays known as Smectites, a class of swelling clays.</p><p>Smectite is derived from the ancient Greek word <em><strong>σμηκτρίς</strong></em><strong>s </strong>or<strong> </strong><em><strong>mektris</strong></em> meaning, '<em>earth that has the property of cleaning</em>'</p><p>As with any mineral, the quality of clay deposits vary, and the mineral content of any given \"Bentonite\" is also quite different depending on the source.</p><p>Different forms of bentonite may have different properties, such as:</p><ul><li><em><strong>Sodium Bentonite</strong></em></li><li><em><strong>Calcium Bentonite</strong></em></li><li><em><strong>Magnesium Bentonite</strong></em></li></ul>",
             "slide_1_button_text": "Shop now",
             "slide_1_button_link": "shopify://products/red-desert-calcium-bentonite",
-            "slide_2_image": "shopify://shop_images/MS-FGCI-1000x1000.png",
             "slide_2_title": "Illite",
             "slide_2_subtitle": "French Green Clay",
             "slide_2_description": "<p><strong>Montmorillonite</strong>: French green healing clay (also a smectite) closely related to bentonite.</p><p><br/><strong>Illite: </strong>Non-swelling green healing clay (mica) known to have potent healing properties.</p><p>Utilizing the curative power of the Earth in practices such as Pelotherapy should, we believe, truly be considered a lifestyle modification; it should be adopted as an integral part of healthy living. There is no substitute for the benefits that quality healing clays can provide both in and on the body. We cordially invite you to view what we have discovered over the last several years of research.</p>",
             "slide_2_button_text": "Explore",
             "slide_2_button_link": "shopify://products/illite-french-green-clay",
-            "slide_3_image": "shopify://shop_images/MS_-_Inland_Sea_Minerals_Bath_Blend_-_Salt_-_1000x1000_lines_-_cover.png",
             "slide_3_title": "Salts",
             "slide_3_subtitle": "Mineral",
             "slide_3_description": "<p><strong>Magnesium Chloride</strong>: Derived from sea salts, Magnesium Chloride Flakes are the 100% pure and natural way to replenish the body's stores.</p><p><strong>Himalayan Pink Salt: </strong>Straight from the foothills of the world's highest mountain range, Himalaya Pink Salt is believed to be the purest of the salts, delivering over 84 minerals and trace elements.</p><p><strong>Dead Sea Salt: </strong>Procured from the saltiest and deepest sea in the world, Dead Sea Salt is world re-known for being a great anti-inflammatory and skin rejuvenator.</p>",
@@ -464,7 +453,6 @@
       "settings": {
         "color_scheme": "scheme-3",
         "collage_alignment": "media-sticky",
-        "primary_image": "shopify://shop_images/MS---Pelotherapy---edit-01b.jpg",
         "content_ordering_desktop": "fd-row-md",
         "collage_width": "6",
         "content_position_mobile": "ta-center",
@@ -646,8 +634,6 @@
       "name": "MS Heritage",
       "settings": {
         "color_scheme": "",
-        "image_1": "shopify://shop_images/science.webp",
-        "image_2": "shopify://shop_images/tests.webp",
         "quote": "",
         "quote_attr": "",
         "eyebrow": "The Clinical Artisan",
