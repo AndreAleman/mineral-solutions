@@ -9,11 +9,11 @@
  */
 {
   "current": {
-    "page_background": "#ffffff",
-    "page_background_gradient": "linear-gradient(180deg, rgba(253, 251, 248, 1), rgba(248, 236, 231, 1) 100%)",
+    "page_background": "#f4f1ea",
+    "page_background_gradient": "linear-gradient(180deg, rgba(247, 245, 239, 1), rgba(232, 235, 223, 1) 100%)",
     "color_scheme_drawer_popover": "scheme-4",
-    "primary_blurry_color": "#f8baa9",
-    "secondary_blurry_color": "#ffb572",
+    "primary_blurry_color": "#9ab89b",
+    "secondary_blurry_color": "#d4c9a8",
     "sale_badge_text": "#ecffe5",
     "sale_badge_background": "#1d6b1c",
     "sold_out_text": "#bc3800",
