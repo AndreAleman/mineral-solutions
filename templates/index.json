@@ -265,14 +265,14 @@
         "mineral_card_r6WDRn": {
           "type": "mineral_card",
           "settings": {
-            "image": "shopify://shop_images/MS-SB-1000x1000.png",
+            "image": "shopify://shop_images/MS-TripleBlend-1000x1000lines.png",
             "offset": false,
-            "label": "Sedimentary Silica",
-            "title": "Illite",
-            "description": "Rich in trace minerals and potassium. Exceptional structural support favored for advanced wellness formulations and gut mineral replenishment.",
+            "label": "Best Blend",
+            "title": "Triple Blend",
+            "description": "Rich in trace minerals and electrolytes. Exceptional structural support favored for advanced wellness formulations and gut mineral replenishment. The best of all three clays.",
             "feature_1": "Rich Trace Elements",
             "feature_2": "Mineral Gut Support",
-            "btn_label": "Shop Illite",
+            "btn_label": "Shop Triple Blend",
             "btn_link": "shopify://products/illite-french-green-clay"
           }
         }
