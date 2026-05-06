@@ -237,11 +237,11 @@
         "mineral_card_6Rf6aY": {
           "type": "mineral_card",
           "settings": {
-            "image": "shopify://shop_images/MS-RDCB-1000x1000.png",
+            "image": "shopify://shop_images/MS-GDCB-1000x1000.png",
             "offset": false,
             "label": "Volcanic Earth",
-            "title": "Bentonite",
-            "description": "Sodium bentonite sun-dried to preserve its active crystalline lattice. Supports digestive detoxification through powerful adsorption.",
+            "title": "Green Desert Calcium Bentonite",
+            "description": "Calcium Bentonite is sun-dried to preserve its active crystalline lattice. Supports digestive detoxification through powerful adsorption & adsorption.",
             "feature_1": "Ionic Gut Detoxification",
             "feature_2": "High Swelling Capacity",
             "btn_label": "Shop Bentonite",
