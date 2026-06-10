@@ -135,6 +135,7 @@
         },
         "collapsible_item_zfEqEP": {
           "type": "collapsible_item",
+          "disabled": true,
           "settings": {
             "show_icon": true,
             "icon_source": "theme_library",
