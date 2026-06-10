@@ -667,7 +667,7 @@
             "text_color": "",
             "text_color_gradient": "",
             "subheading": "Natural Minerals",
-            "description": "<p>All Minerals & Blends are as pure as can be. We mine, mill, refine, and source only the best minerals the world has to offer. Just for you. </p>"
+            "description": "<p>All Minerals & Blends are as pure as can be. We mine, mill, refine, and source only the best minerals the world has to offer. <span style=\"text-decoration:underline\">Just for you. </span></p>"
           }
         },
         "item_DhDhAN": {
@@ -677,7 +677,7 @@
             "text_color": "",
             "text_color_gradient": "",
             "subheading": "Minerals & Blends",
-            "description": "<p>Decades user testimony and testing proves that our minerals help improve the lives of our customers, daily. How can we help you?</p>"
+            "description": "<p>Decades of user testimonies and testing has proven that our minerals help improve the lives of our customers, daily. <span style=\"text-decoration:underline\">How can we help you?</span></p>"
           }
         },
         "item_tGx8gP": {
