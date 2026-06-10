@@ -87,7 +87,7 @@
       "settings": {
         "color_scheme": "scheme-4",
         "speed": "50",
-        "moving_direction": "animation-reverse",
+        "moving_direction": "animation-direction",
         "pause_when_hover": false,
         "heading_size": "h2"
       }
