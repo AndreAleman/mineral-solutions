@@ -609,7 +609,7 @@
           "settings": {
             "icon": "flask",
             "title": "ICP-MS Screening",
-            "description": "Heavy metal testing at parts-per-billion precision."
+            "description": "Periodic Elemental & Heavy Metal Testing at parts-per-million and parts-per-million precision, depending on the element being tested."
           }
         },
         "credential_rULrgr": {
