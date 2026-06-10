@@ -615,15 +615,15 @@
         "credential_rULrgr": {
           "type": "credential",
           "settings": {
-            "icon": "check",
-            "title": "Food-Grade",
-            "description": "Human consumption safe, fully traceable sourcing."
+            "icon": "shield",
+            "title": "Quality is #1",
+            "description": "We only mine, mill, and source the finest minerals the world has to offer. If you need a mineral that we do not carry, please let us know, and we'll source it for you."
           }
         },
         "credential_8h3t4t": {
           "type": "credential",
           "settings": {
-            "icon": "shield",
+            "icon": "check",
             "title": "Food Grade",
             "description": "Our Clay minerals are considered Food Grade as recognized by the FDA that are minerals are Generally Recognized As Safe. https://www.fda.gov/food/food-ingredients-packaging/generally-recognized-safe-gras"
           }
