@@ -530,7 +530,7 @@
       ],
       "name": "t:sections.featured_product.name",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "subheading": "",
         "heading": "[Your] First Clay",
         "heading_size": "h3",
