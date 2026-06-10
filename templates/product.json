@@ -103,6 +103,7 @@
         },
         "icon_with_text_z6hXVU": {
           "type": "icon_with_text",
+          "disabled": true,
           "settings": {
             "enable_background": true,
             "color_background": "#fdfbf8",
@@ -149,6 +150,7 @@
         },
         "collapsible_item_8WQ8D6": {
           "type": "collapsible_item",
+          "disabled": true,
           "settings": {
             "show_icon": true,
             "icon_source": "theme_library",
