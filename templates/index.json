@@ -683,11 +683,11 @@
         "item_tGx8gP": {
           "type": "item",
           "settings": {
-            "value_text": "30-Day",
+            "value_text": "1,000+",
             "text_color": "",
             "text_color_gradient": "",
-            "subheading": "Risk Free",
-            "description": "<p>Enjoy risk-free shopping with a 30-day free return policy, no questions asked.</p>"
+            "subheading": "Customers",
+            "description": "<p>Decades of user testimonies and testing has proven that our minerals help improve the lives of our customers, daily. <span style=\"text-decoration:underline\">How can we help you?</span></p>"
           }
         }
       },
