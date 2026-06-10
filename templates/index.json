@@ -158,7 +158,7 @@
         " /* Reserve the same space for subtitles */.product-card__subtitle {font-size: 14px; /* was 0.875rem */ line-height: 1.4; min-height: 5.6em; /* keep this so rows stay aligned */}"
       ],
       "settings": {
-        "color_scheme": "scheme-3",
+        "color_scheme": "scheme-5",
         "collection": "clay-minerals",
         "subheading": "",
         "heading": "Most [Loved] Clays",
@@ -530,7 +530,7 @@
       ],
       "name": "t:sections.featured_product.name",
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-5",
         "subheading": "",
         "heading": "[Your] First Clay",
         "heading_size": "h3",
