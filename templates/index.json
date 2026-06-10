@@ -612,14 +612,6 @@
             "description": "Heavy metal testing at parts-per-billion precision."
           }
         },
-        "credential_8h3t4t": {
-          "type": "credential",
-          "settings": {
-            "icon": "shield",
-            "title": "Food Grade",
-            "description": "Our Clay minerals are considered Food Grade as recognized by the FDA that are minerals are Generally Recognized As Safe. https://www.fda.gov/food/food-ingredients-packaging/generally-recognized-safe-gras"
-          }
-        },
         "credential_rULrgr": {
           "type": "credential",
           "settings": {
@@ -628,19 +620,27 @@
             "description": "Human consumption safe, fully traceable sourcing."
           }
         },
+        "credential_8h3t4t": {
+          "type": "credential",
+          "settings": {
+            "icon": "shield",
+            "title": "Food Grade",
+            "description": "Our Clay minerals are considered Food Grade as recognized by the FDA that are minerals are Generally Recognized As Safe. https://www.fda.gov/food/food-ingredients-packaging/generally-recognized-safe-gras"
+          }
+        },
         "credential_jWxHRk": {
           "type": "credential",
           "settings": {
             "icon": "leaf",
             "title": "Capsule-Ready",
-            "description": "Fine-milled for direct encapsulation or blending."
+            "description": "Ultra Fine-milled for direct encapsulation or blending. Reach out to us directly, or contact our sister-company, TheraClays.com for more information."
           }
         }
       },
       "block_order": [
         "credential_zryp8d",
-        "credential_8h3t4t",
         "credential_rULrgr",
+        "credential_8h3t4t",
         "credential_jWxHRk"
       ],
       "name": "MS Heritage",
