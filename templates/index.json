@@ -267,11 +267,11 @@
           "settings": {
             "image": "shopify://shop_images/MS-TripleBlend-1000x1000lines.png",
             "offset": false,
-            "label": "Best Blend",
+            "label": "The Neopolitan of Clay",
             "title": "Triple Blend",
-            "description": "Rich in trace minerals and electrolytes. Exceptional structural support favored for advanced wellness formulations and gut mineral replenishment. The best of all three clays.",
-            "feature_1": "Rich Trace Elements",
-            "feature_2": "Mineral Gut Support",
+            "description": "Rich in trace minerals and electrolytes. Exceptional structural support favored for advanced wellness formulations and gut mineral replenishment. The best of all three clays Green Bentonite, Red Bentonite, and USP Sodium Bentonite",
+            "feature_1": "- Rich Trace Elements",
+            "feature_2": "- Mineral Gut Support",
             "btn_label": "Shop Triple Blend",
             "btn_link": "shopify://products/illite-french-green-clay"
           }
