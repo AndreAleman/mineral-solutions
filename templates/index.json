@@ -19,14 +19,14 @@
         "height_mobile": "70vh",
         "overlay_color": "#000000",
         "overlay_opacity": 25,
-        "badge_text": "Food-Grade & Laboratory Tested",
+        "badge_text": "Food Grade & Laboratory Tested",
         "heading_line1": "Earth's",
         "heading_line2": "Digestive Alchemy",
-        "subtext": "Pure mineral powders harnessing the ion-exchange power of rare earths. Formulated for internal wellness, rigorously tested for professional-grade purity.",
+        "subtext": "Pure clay mineral powders harnessing the ion-exchange power of various different rare earths. Chosen & Formulated for internal wellness, rigorously tested for professional-grade purity.",
         "btn1_label": "Explore Collections",
-        "btn1_link": "",
+        "btn1_link": "shopify://collections/all",
         "btn2_label": "Read Our Heritage",
-        "btn2_link": ""
+        "btn2_link": "shopify://pages/about-new"
       }
     },
     "image-banner": {
