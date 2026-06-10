@@ -225,10 +225,11 @@
         "quocte_KDzH6G": {
           "type": "quocte",
           "settings": {
+            "avatar": "shopify://shop_images/Mineral_Solutions_-_logo_512x512_-_01.png",
             "avatar_width": 60,
             "avatar_width_mobile": 40,
-            "star": 3,
-            "quote_label": "<h3>Every mineral is mined by us or ethically sourced, not just for its efficacy, but for its story – a narrative of purity, sustainability, and the commitment to enhance your health, beauty & wellness, naturally. </h3>",
+            "star": 4,
+            "quote_label": "<h4>Every mineral is mined by us or ethically sourced, not just for its efficacy, but for its story – a narrative of purity, sustainability, and the commitment to enhance your health, beauty & wellness, naturally. </h4>",
             "author": "- Mineral Solutions"
           }
         }
