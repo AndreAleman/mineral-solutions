@@ -39,7 +39,7 @@
         "image_9YUz7Y": {
           "type": "image",
           "settings": {
-
+            "image_ratio": "auto"
           }
         },
         "text_cmArha": {
@@ -53,7 +53,8 @@
         "image_JFVrfV": {
           "type": "image",
           "settings": {
-
+            "image": "shopify://shop_images/Mineral_Solutions_-_logo_512x512_-_01.png",
+            "image_ratio": "auto"
           }
         },
         "text_gBYiDW": {
@@ -69,7 +70,7 @@
           "type": "image",
           "disabled": true,
           "settings": {
-
+            "image_ratio": "auto"
           }
         }
       },
@@ -83,7 +84,7 @@
       ],
       "settings": {
         "color_scheme": "scheme-4",
-        "speed": "100",
+        "speed": "50",
         "moving_direction": "animation-reverse",
         "pause_when_hover": false,
         "heading_size": "h2"
@@ -122,7 +123,7 @@
         "image_DUX9f3": {
           "type": "image",
           "settings": {
-
+            "image_ratio": "auto"
           }
         },
         "text_jXyVDJ": {
@@ -136,7 +137,7 @@
         "image_YaJrjj": {
           "type": "image",
           "settings": {
-
+            "image_ratio": "auto"
           }
         },
         "text_mKfmaY": {
@@ -150,7 +151,7 @@
         "image_jiG9GA": {
           "type": "image",
           "settings": {
-
+            "image_ratio": "auto"
           }
         }
       },
@@ -179,7 +180,6 @@
         "heading_size": "h3",
         "description": "<p>We're proud to introduce our team of expert dermatologists, dedicated to ensuring that every product we offer meets the highest standards of skin care.</p>",
         "button_label": "Subscribe",
-
         "content_ordering_desktop": "fd-row-md",
         "content_ordering_mobile": "image-first-mb"
       }
