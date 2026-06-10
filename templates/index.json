@@ -253,11 +253,11 @@
           "settings": {
             "image": "shopify://shop_images/MS-MZ-1000x1000.png",
             "offset": true,
-            "label": "Clinoptilolite Grade",
+            "label": "Clinoptilolite",
             "title": "Micronized Zeolite",
-            "description": "A molecular sieve of unmatched precision. Microporous aluminosilicate minerals optimized for heavy metal detoxification, digestive filtration and gut support.",
-            "feature_1": "Heavy Metal Affinity",
-            "feature_2": "Molecular Pore Precision",
+            "description": "A molecular sieve of unmatched precision. Microporous aluminosilicate minerals optimized and targeted for Heavy Metal detoxification, digestive filtration, and gut support.",
+            "feature_1": "- Heavy Metal Affinity",
+            "feature_2": "- Molecular Pore Precision",
             "btn_label": "Shop Zeolite",
             "btn_link": "shopify://products/micronized-zeolite"
           }
