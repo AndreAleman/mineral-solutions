@@ -39,7 +39,8 @@
         "image_9YUz7Y": {
           "type": "image",
           "settings": {
-            "image_ratio": "auto"
+            "image": "shopify://shop_images/Mineral_Solutions_-_logo_512x512_-_01.png",
+            "image_ratio": "1"
           }
         },
         "text_cmArha": {
