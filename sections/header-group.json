@@ -57,18 +57,17 @@
             "promotions_mask_overlay_color": "#17161a",
             "promotions_overlay_opacity": 15,
             "promotions_content_overlay_color": "#ffffff",
-
             "primary_heading": "50% OFF for Black Friday",
-
-
+            "primary_link": "",
             "secondary_heading": "New Lipstick Collection",
-
+            "secondary_link": ""
           }
         },
         "collections_menu_NHnPj6": {
           "type": "collections_menu",
           "settings": {
             "header_collection_title": "Featured Collections",
+            "collection_list": [],
             "items_per_row_on_desktop": "5"
           }
         }
@@ -81,9 +80,8 @@
         "color_scheme": "scheme-1",
         "header_sticky": "true",
         "menu_open_trigger": "click",
-
         "logo_width": 90,
-        "logo_width_mobile": 90,
+        "logo_width_mobile": 120,
         "main_menu": "main-menu",
         "open_external_link": true,
         "enable_menu_highlight": true,
