@@ -721,7 +721,7 @@
         "heading": "Read [our blogs]",
         "heading_size": "h3",
         "description": "",
-        "blog": "news",
+        "blog": "notes-from-the-deposit",
         "items_to_show": 4,
         "show_featured_image": true,
         "show_blog_tags": true,
