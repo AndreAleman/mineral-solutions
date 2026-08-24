@@ -47,7 +47,7 @@
           <li>
             <span class="subtext color-light" aria-current="page">{{ product.title }}</span>
           </li>
-        {%- when 'collection' and collection.handle -%}
+        {%- when 'collection' -%}
           {%- if current_tags -%}
             <li>
               <a class="breadcrumb__link subtext " href="{{ routes.collections_url }}" aria-current="page">{{ 'templates.breadcrumb.collections' | t }}</a>
@@ -139,3 +139,13 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- when 'collection' and collection.handle -%}"
+  to: "{%- when 'collection' -%}"
+  position: 1699..1724
+{% endcomment %}

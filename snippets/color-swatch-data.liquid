@@ -14,7 +14,7 @@
 
         if legal_image_extensions contains file_type
           assign new_value = value
-          if file_type == 'png' || file_type == 'jpg' || file_type == 'jpeg' || file_type == 'gif' || file_type == 'svg' || file_type == 'webp'
+          if file_type == 'png'
             assign value = value | strip | file_img_url
           else
             assign value = value | strip | file_url
@@ -38,4 +38,14 @@
   {%- else -%}
     {"color_swatch_name": [""], "color_swatch_value": [""]}
   {%- endif -%}
-</script>
+</script>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "          if file_type == 'png' || file_type == 'jpg' || file_type == 'jpeg'
+    || file_type == 'gif' || file_type == 'svg' || file_type == 'webp'"
+  to: "          if file_type == 'png'"
+  position: 697..728
+{%- endcomment -%}

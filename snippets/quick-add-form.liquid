@@ -40,4 +40,14 @@
   {%- endform -%}
 </sht-atc-frm>
 
- {% render 'js-loader', files: "component-quickadd.js" | split: ', ' %}
+ {% render 'js-loader', files: "component-quickadd.js", split: ', ' %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{% render ''js-loader'', files: "component-quickadd.js" | split: '', '' %}'
+  to: '{% render ''js-loader'', files: "component-quickadd.js", split: '', '' %}'
+  position: 1925..1994
+{% endcomment %}

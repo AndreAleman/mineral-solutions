@@ -124,15 +124,15 @@
       </p>
       {% endif %}
       {%- liquid
-        render 'product-price' product: product, target: product, price_class: 'd-block product-card__price', content_align: card_content_position | default: settings.product_card_position
+        render 'product-price', product: product, target: product, price_class: 'd-block product-card__price', content_align: card_content_position, default: settings.product_card_position
         if show_color_swatch == true
-          render 'card-product-color-swatch', product: product, product_image_id: product_image_id, product_link_class: product_link_class, is_first: is_first, content_align: card_content_position | default:  settings.product_card_position
+          render 'card-product-color-swatch', product: product, product_image_id: product_image_id, product_link_class: product_link_class, is_first: is_first, content_align: card_content_position, default: settings.product_card_position
         endif
       -%}
     </div>
     {%- unless add_to_cart == 'none' or product.selected_or_first_available_variant.available == false or add_to_cart == 'quick_view' -%}
       {%- if product.has_only_default_variant -%}
-        {% render 'quick-add-form', section: section, product: product, content_align: card_content_position | default: settings.product_card_position %}
+        {% render 'quick-add-form', section: section, product: product, content_align: card_content_position, default: settings.product_card_position %}
       {%- else -%}
         <button class="btn btn-outline btn-small no-js-hidden btn-quick-add mt-16 w-100"
         aria-label="{{ "products.product.quick_add" | t }}" aria-haspopup="true" type="button"
@@ -146,3 +146,28 @@
 </div>
 
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: 'render ''product-price'' product: product, target: product, price_class:
+    ''d-block product-card__price'', content_align: card_content_position | default:
+    settings.product_card_position'
+  to: 'render ''product-price'', product: product, target: product, price_class: ''d-block
+    product-card__price'', content_align: card_content_position, default: settings.product_card_position'
+  position: 6997..7177
+- from: "          render 'card-product-color-swatch', product: product, product_image_id:
+    product_image_id, product_link_class: product_link_class, is_first: is_first,
+    content_align: card_content_position | default:  settings.product_card_position"
+  to: "          render 'card-product-color-swatch', product: product, product_image_id:
+    product_image_id, product_link_class: product_link_class, is_first: is_first,
+    content_align: card_content_position, default: settings.product_card_position"
+  position: 7215..7452
+- from: "{% render 'quick-add-form', section: section, product: product, content_align:
+    card_content_position | default: settings.product_card_position %}"
+  to: "{% render 'quick-add-form', section: section, product: product, content_align:
+    card_content_position, default: settings.product_card_position %}"
+  position: 7684..7828
+{% endcomment %}
